@@ -7,9 +7,6 @@ public class Purchase {
     int productId;
     LocalDateTime timestamp;
 
-    // Required for Firebase
-    private Purchase() {}
-
     public Purchase(int userId, int productId, LocalDateTime timestamp) {
         this.userId = userId;
         this.productId = productId;
