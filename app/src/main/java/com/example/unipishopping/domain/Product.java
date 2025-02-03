@@ -23,4 +23,13 @@ public class Product {
         this.locationLatitude = locationLatitude;
         this.locationLongitude = locationLongitude;
     }
+
+    // Required for Firebase
+    public int getId() { return this.id; }
+    public String getTitle() { return this.title; }
+    public String getDescription() { return this.description; }
+    public LocalDate getReleaseDate() { return this.releaseDate; }
+    public float getPrice() { return price; }
+    public float getLocationLatitude() { return locationLatitude; }
+    public float getLocationLongitude() { return locationLongitude; }
 }

@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseDatabase database;
@@ -38,11 +39,11 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        testUser = new User(1, "test", "test", "test", "test");
+        testUser = new User(1, "test", "test", "test", "test", new ArrayList<>());
         testProduct = new Product(1, "test", "test", LocalDate.now(), 2.99f, 1.233455353f, 4.245345665f);
         testPurchase = new Purchase(1, 1, LocalDateTime.now());
 
-        //testUser.addPurchase(testPurchase);
+        testUser.addPurchase(testPurchase);
 
         database = FirebaseDatabase.getInstance();
         productsReference = database.getReference("products");
