@@ -1,5 +1,6 @@
 package com.example.unipishopping.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -8,7 +9,7 @@ public class User {
     String lastname;
     String username;
     String password;
-    List<Purchase> purchases = null;
+    List<Purchase> purchases = new ArrayList<>();
 
     // Required for Firebase
     private User() {}

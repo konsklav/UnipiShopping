@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         testUser = new User(1, "test", "test", "test", "test", new ArrayList<>());
-        testProduct = new Product(1, "test", "test", LocalDate.now(), 2.99f, 1.233455353f, 4.245345665f);
-        testPurchase = new Purchase(1, 1, LocalDateTime.now());
+        testProduct = new Product(1, "test", "test", LocalDate.now(), 2.99d, 1.233455353d, 4.245345665d);
+        testPurchase = new Purchase(1, LocalDateTime.now());
 
         testUser.addPurchase(testPurchase);
 
