@@ -20,12 +20,8 @@ public class User {
         this.username = username;
         this.password = password;
     }
-    public User(int id, String firstname, String lastname, String username, String password, List<Purchase> purchases) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.username = username;
-        this.password = password;
+    public User(int id, String firstname, String lastname, String username, String password, List<Purchase> purchases)  {
+        this(id, firstname, lastname, username, password);
         this.purchases = purchases;
     }
 
