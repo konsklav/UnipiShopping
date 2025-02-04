@@ -6,8 +6,8 @@ public class LoginError {
     public static final int INCORRECT_PASSWORD = 2;
     public static final int TASK_FAILED = 3;
 
-    private int code;
-    private String description;
+    private final int code;
+    private final String description;
 
     private LoginError(int code, String description) {
         this.code = code;

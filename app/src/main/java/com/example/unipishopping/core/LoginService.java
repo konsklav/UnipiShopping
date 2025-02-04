@@ -6,11 +6,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginService {
-    private final FirebaseDatabase database;
     private final DatabaseReference usersReference;
 
     public LoginService() {
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         usersReference = database.getReference("users");
     }
 
