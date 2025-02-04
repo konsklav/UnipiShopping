@@ -6,6 +6,8 @@
     <dimen name="login_btn">20sp</dimen>
     <dimen name="product_info_small">12sp</dimen>
     <dimen name="product_info_big">22sp</dimen>
+    <dimen name="notifications_height">50sp</dimen>
+    <dimen name="notifications_width">100sp</dimen>
 
     <dimen name="title_margin">30sp</dimen>
     <dimen name="sub_margin">10sp</dimen>

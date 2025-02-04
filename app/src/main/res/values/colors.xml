@@ -6,4 +6,6 @@
     <color name="bold_purple">#3e008f</color>
     <color name="light_blue">#879dff</color>
     <color name="pastel_green">#87ff9f</color>
+
+    <color name="transparent_purple">#203E008F</color>
 </resources>
