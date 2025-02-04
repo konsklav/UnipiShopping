@@ -61,5 +61,10 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
             throw new RuntimeException("Failed to inflate ViewBinding in " + getClass().getSimpleName(), e);
         }
     }
+
+
+    /**
+     * Called immediately after the regular onCreate method finishes setting up bindings, locales, etc...
+     */
     protected abstract void onAfterCreate();
 }
