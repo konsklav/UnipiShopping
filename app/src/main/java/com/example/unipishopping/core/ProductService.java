@@ -18,10 +18,12 @@ public class ProductService implements ProductCallbacks{
         productReference = database.getReference("products");
     }
 
+    // Check https://github.com/Noveboi/UnipiShopping/issues/12#issuecomment-2635238969
     public void order(int productId, User buyer){
         searchProduct(productId, buyer,this);
     }
 
+    // You can transfer the searchProduct() code in order()
     public void searchProduct(int productId, User buyer, ProductCallbacks callbacks){
         productReference.child(String.valueOf(productId)).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()){
@@ -37,6 +39,8 @@ public class ProductService implements ProductCallbacks{
         });
     }
 
+    // Implementing the ProductCallbacks interface is redundant.
+    // You can handle the product found/not found logic directly in the order() method
     @Override
     public void onProductFound(Product product, User buyer) {
         Purchase purchase = new Purchase(product.getId(), LocalDateTime.now().toInstant(ZoneOffset.ofHours(2)).toEpochMilli());
