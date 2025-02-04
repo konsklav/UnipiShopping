@@ -81,8 +81,8 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="@dimen/imgs"
-        android:layout_height="@dimen/imgs"
+        android:layout_width="@dimen/main_img"
+        android:layout_height="@dimen/main_img"
         android:background="@drawable/stroke"
         android:layout_marginTop="@dimen/img_margin"
         app:layout_constraintEnd_toEndOf="parent"

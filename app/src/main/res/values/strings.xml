@@ -8,4 +8,8 @@
     <string name="username_login">Username</string>
     <string name="password_login">Password</string>
     <string name="login_button">Login</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_price">11.99$</string>
+    <string name="buy_part1">Buy Product</string>
+    <string name="buy_part2">here:</string>
 </resources>
