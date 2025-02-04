@@ -13,10 +13,13 @@
         android:theme="@style/Theme.UnipiShopping"
         tools:targetApi="31">
         <activity
-            android:name=".ui.SettingsActivity"
+            android:name=".ui.ProductActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.ProductActivity"
+            android:name=".ProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.LoginActivity"
