@@ -10,8 +10,6 @@ import java.util.List;
 
 public class User implements Parcelable {
     int id;
-    String firstname;
-    String lastname;
     String username;
     String password;
     List<Purchase> purchases = new ArrayList<>();
@@ -19,22 +17,18 @@ public class User implements Parcelable {
     // Required for Firebase
     private User() {}
 
-    public User(int id, String firstname, String lastname, String username, String password) {
+    public User(int id, String username, String password) {
         this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
         this.username = username;
         this.password = password;
     }
-    public User(int id, String firstname, String lastname, String username, String password, List<Purchase> purchases)  {
-        this(id, firstname, lastname, username, password);
+    public User(int id, String username, String password, List<Purchase> purchases)  {
+        this(id, username, password);
         this.purchases = purchases;
     }
 
     // Required for Firebase
     public int getId() { return this.id; }
-    public String getFirstname() { return this.firstname; }
-    public String getLastname() { return this.lastname; }
     public String getUsername() { return this.username; }
     public String getPassword() { return this.password; }
     public List<Purchase> getPurchases() { return this.purchases; }
@@ -50,8 +44,6 @@ public class User implements Parcelable {
 
     private User(Parcel in) {
         id = in.readInt();
-        firstname = in.readString();
-        lastname = in.readString();
         username = in.readString();
         password = in.readString();
 
@@ -61,8 +53,6 @@ public class User implements Parcelable {
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(id);
-        dest.writeString(firstname);
-        dest.writeString(lastname);
         dest.writeString(username);
         dest.writeString(password);
         dest.writeTypedList(purchases);
