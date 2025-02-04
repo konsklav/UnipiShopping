@@ -108,6 +108,7 @@
         app:layout_constraintTop_toBottomOf="@+id/frameLayout5">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etLoginUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/username_login" />
@@ -124,13 +125,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etLoginPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password_login" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/bold_purple"
