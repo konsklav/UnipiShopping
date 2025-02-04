@@ -12,43 +12,27 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.function.Consumer;
 
 public class LoginService {
-    private boolean login;
-
     private final FirebaseDatabase database;
     private final DatabaseReference usersReference;
 
     public LoginService() {
-        this.login = false;
-
         database = FirebaseDatabase.getInstance();
         usersReference = database.getReference("users");
     }
 
-    public boolean login(String username, String password) {
-        queryDatabase(username, password, user -> { if(user != null) { login = true; } });
-        return login;
-    }
-
-    public void queryDatabase(String username, String password, Consumer<User> callback) {
-        usersReference.orderByChild("username").equalTo(username).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+    public void login(String username, String password,  LoginCallbacks callbacks) {
+        usersReference.child(username).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                DataSnapshot snapshot = task.getResult();
                 if (snapshot.exists()) {
-                    for (DataSnapshot userSnapshot : snapshot.getChildren()) {
-                        String storedPassword = userSnapshot.child("password").getValue(String.class);
-                        if (storedPassword != null && storedPassword.equals(password)) {
-                            callback.accept(userSnapshot.getValue(User.class)); // Login successful
-                            return;
-                        }
+                    User user = snapshot.getValue(User.class);
+                    if(user != null && user.getPassword().equals(password)) {
+                        callbacks.onSuccess(user);
+                        return;
                     }
                 }
-                callback.accept(null); // No user found or wrong password
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                callback.accept(null); // Handle errors
-            }
+            callbacks.onFail(); // No user found or wrong password
         });
     }
 }
