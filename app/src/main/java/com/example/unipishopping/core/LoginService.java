@@ -25,11 +25,11 @@ public class LoginService {
     }
 
     public boolean login(String username, String password) {
-        checkDatabase(username, password, user -> { if(user != null) { login = true; } });
+        queryDatabase(username, password, user -> { if(user != null) { login = true; } });
         return login;
     }
 
-    public void checkDatabase(String username, String password, Consumer<User> callback) {
+    public void queryDatabase(String username, String password, Consumer<User> callback) {
         usersReference.orderByChild("username").equalTo(username).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
