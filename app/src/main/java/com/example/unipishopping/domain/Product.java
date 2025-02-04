@@ -6,7 +6,7 @@ public class Product {
     int id;
     int title;
     String description;
-    LocalDate releaseDate;
+    long releaseDate;
     double price;
     double locationLatitude;
     double locationLongitude;
@@ -14,7 +14,7 @@ public class Product {
     // Required for Firebase
     private Product() {}
 
-    public Product(int id, int title, String description, LocalDate releaseDate, double price, double locationLatitude, double locationLongitude) {
+    public Product(int id, int title, String description, long releaseDate, double price, double locationLatitude, double locationLongitude) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -28,7 +28,7 @@ public class Product {
     public int getId() { return this.id; }
     public int getTitle() { return this.title; }
     public String getDescription() { return this.description; }
-    public LocalDate getReleaseDate() { return this.releaseDate; }
+    public long getReleaseDate() { return this.releaseDate; }
     public double getPrice() { return price; }
     public double getLocationLatitude() { return locationLatitude; }
     public double getLocationLongitude() { return locationLongitude; }
