@@ -13,11 +13,11 @@
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/logo_title_margin"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/logo_title_margin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ivLogo"
+        app:layout_constraintStart_toEndOf="@+id/frameLayout2"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -48,16 +48,23 @@
             android:textSize="@dimen/big_title" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/ivLogo"
-        android:layout_width="@dimen/logo"
-        android:layout_height="@dimen/logo"
-        android:background="@drawable/stroke"
-        android:layout_marginTop="@dimen/logo_margin"
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/logo_margin"
+        android:layout_marginTop="@dimen/logo_margin"
+        android:background="@drawable/stroke"
+        android:padding="3dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/store_icon" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="@dimen/logo"
+            android:layout_height="@dimen/logo"
+            app:srcCompat="@drawable/store_icon" />
+    </FrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="296dp"

@@ -11,6 +11,7 @@
     <dimen name="img_margin">50sp</dimen>
     <dimen name="logo_title_margin">25sp</dimen>
     <dimen name="logo_margin">10sp</dimen>
+    <dimen name="login_btn_margin">20sp</dimen>
 
     <dimen name="main_img">200sp</dimen>
     <dimen name="list_imgs">100sp</dimen>

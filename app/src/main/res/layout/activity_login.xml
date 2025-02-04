@@ -79,26 +79,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="@dimen/main_img"
-        android:layout_height="@dimen/main_img"
-        android:background="@drawable/stroke"
+    <FrameLayout
+        android:id="@+id/frameLayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/img_margin"
+        android:background="@drawable/stroke"
+        android:padding="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:srcCompat="@drawable/store_icon" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="@dimen/main_img"
+            android:layout_height="@dimen/main_img"
+            app:srcCompat="@drawable/store_icon" />
+    </FrameLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/textInputLayout3"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="@dimen/title_margin"
         android:background="@drawable/stroke"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout5">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -107,14 +114,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/textInputLayout4"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="@dimen/sub_margin"
         android:background="@drawable/stroke"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -127,10 +134,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/bold_purple"
-        android:textSize="@dimen/login_btn"
         android:text="@string/login_button"
-        android:layout_marginTop="@dimen/sub_title"
+        android:textSize="@dimen/login_btn"
+        android:layout_marginTop="@dimen/login_btn_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/imProductImg"
             android:layout_width="@dimen/list_imgs"
             android:layout_height="@dimen/list_imgs"
             android:scaleType="centerCrop"
