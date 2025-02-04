@@ -64,7 +64,6 @@
             android:textColor="@color/black"
             tools:layout_editor_absoluteX="263dp"
             tools:layout_editor_absoluteY="133dp" />
-
     </LinearLayout>
 
     <TextView
