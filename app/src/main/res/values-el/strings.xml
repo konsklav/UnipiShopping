@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="title_part1">Καλώς ήρθατε στο</string>
+    <string name="login_bellow">Συνδεθείτε για να προχωρήσετε:</string>
+    <string name="username_login">Όνομα Χρήστη</string>
+    <string name="password_login">Κωδικός</string>
+    <string name="login_button">Σύνδεση</string>
+    <string name="product_name">Προϊόν</string>
+    <string name="product_price">18.99€</string>
+    <string name="buy_part1">Αγορά Προϊόντος</string>
+    <string name="buy_part2">:</string>
+    <string name="settings">Ρυθμίσεις</string>
+</resources>

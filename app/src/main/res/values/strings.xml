@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">UnipiShopping</string>
+    <string name="app_name" translatable="false">UnipiShopping</string>
     <string name="title_part1">Welcome to</string>
-    <string name="title_part2">Unipi</string>
-    <string name="title_part3">PLI</string>
-    <string name="title_part4">Shopping</string>
+    <string name="title_part2" translatable="false">Unipi</string>
+    <string name="title_part3" translatable="false">PLI</string>
+    <string name="title_part4" translatable="false">Shopping</string>
     <string name="login_bellow">Please Login to continue:</string>
     <string name="username_login">Username</string>
     <string name="password_login">Password</string>
