@@ -1,10 +1,11 @@
 package com.example.unipishopping.domain;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.util.TimeZone;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Purchase {
+import androidx.annotation.NonNull;
+
+public class Purchase implements Parcelable {
     int productId;
     long timestamp;
 
@@ -16,7 +17,35 @@ public class Purchase {
         this.timestamp = timestamp;
     }
 
+    protected Purchase(Parcel in) {
+        productId = in.readInt();
+        timestamp = in.readLong();
+    }
+
+    public static final Creator<Purchase> CREATOR = new Creator<Purchase>() {
+        @Override
+        public Purchase createFromParcel(Parcel in) {
+            return new Purchase(in);
+        }
+
+        @Override
+        public Purchase[] newArray(int size) {
+            return new Purchase[size];
+        }
+    };
+
     // Required for Firebase
     public int getProductId() { return productId; }
     public long getTimestamp() { return this.timestamp; }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(productId);
+        dest.writeLong(timestamp);
+    }
 }

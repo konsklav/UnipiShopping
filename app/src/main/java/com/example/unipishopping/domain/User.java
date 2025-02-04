@@ -1,9 +1,14 @@
 package com.example.unipishopping.domain;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class User implements Parcelable {
     int id;
     String firstname;
     String lastname;
@@ -37,4 +42,41 @@ public class User {
     public void addPurchase(Purchase purchase) {
         this.purchases.add(purchase);
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    private User(Parcel in) {
+        id = in.readInt();
+        firstname = in.readString();
+        lastname = in.readString();
+        username = in.readString();
+        password = in.readString();
+
+        in.readTypedList(purchases, Purchase.CREATOR);
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(firstname);
+        dest.writeString(lastname);
+        dest.writeString(username);
+        dest.writeString(password);
+        dest.writeTypedList(purchases);
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 }
