@@ -3,6 +3,7 @@ package com.example.unipishopping.ui;
 import android.content.Intent;
 import android.text.Editable;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.unipishopping.core.LoginCallbacks;
@@ -14,15 +15,20 @@ import com.example.unipishopping.ui.constants.IntentExtras;
 
 public class LoginActivity extends AppActivityBase<ActivityLoginBinding> implements LoginCallbacks {
 
+    Button loginButton;
+
     @Override
     protected void onAfterCreate() {
-        getBinding().btnLogin.setOnClickListener(v -> handleLogin());
+        loginButton = getBinding().btnLogin;
+        loginButton.setOnClickListener(v -> handleLogin());
     }
 
     /**
      * Called when 'login' button is pressed
      */
     private void handleLogin() {
+        runOnUiThread(() -> loginButton.setEnabled(false));
+
         Editable username = getBinding().etLoginUsername.getText();
         Editable password = getBinding().etLoginPassword.getText();
 
@@ -49,5 +55,6 @@ public class LoginActivity extends AppActivityBase<ActivityLoginBinding> impleme
     @Override
     public void onLoginFail(LoginError error) {
         Toast.makeText(this, error.getDescription(), Toast.LENGTH_SHORT).show();
+        runOnUiThread(() -> loginButton.setEnabled(true));
     }
 }
