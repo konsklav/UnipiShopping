@@ -11,6 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.List;
 import java.util.function.Consumer;
 
 public class ProductService{
@@ -38,6 +39,14 @@ public class ProductService{
             listener.onOrderSuccess();
         });
     }
+
+    public void addProducts(List<Product> products) { products.forEach(this::addProduct); }
+    public void addProduct(Product product) {
+        productReference
+                .child(String.valueOf(product.getId()))
+                .setValue(product);
+    }
+
 
     public void getProductById(int productId, Consumer<Product> callback) {
         productReference.child(String.valueOf(productId)).get().addOnCompleteListener(task -> {
