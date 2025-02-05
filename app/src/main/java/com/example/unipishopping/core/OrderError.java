@@ -15,6 +15,10 @@ public class OrderError {
         return new OrderError(PRODUCT_NOTFOUND, "Couldn't find the product in our system!");
     }
 
+    static OrderError taskFailed() {
+        return new OrderError(TASK_FAILED, "An error occurred whilst ordering!");
+    }
+
     public String getDescription() {
         return description;
     }

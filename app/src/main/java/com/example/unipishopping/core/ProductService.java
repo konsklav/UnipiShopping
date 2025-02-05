@@ -2,15 +2,20 @@ package com.example.unipishopping.core;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.example.unipishopping.domain.Product;
 import com.example.unipishopping.domain.Purchase;
 import com.example.unipishopping.domain.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.List;
 import java.util.function.Consumer;
 
 public class ProductService{
@@ -30,14 +35,35 @@ public class ProductService{
                 return;
             }
 
-            Purchase purchase = new Purchase(product.getId(), LocalDateTime.now().toInstant(ZoneOffset.ofHours(2)).toEpochMilli());
-            buyer.addPurchase(purchase);
-            userReference.child(buyer.getUsername()).child("purchases").removeValue();  // Is this needed?
-            userReference.child(buyer.getUsername()).child("purchases").setValue(purchase);
+            Purchase purchase = new Purchase(
+                    product.getId(),
+                    LocalDateTime.now().toInstant(ZoneOffset.ofHours(2)).toEpochMilli());
 
-            listener.onOrderSuccess();
+            buyer.addPurchase(purchase);
+
+//            userReference.child(buyer.getUsername()).child("purchases").removeValue();  // Is this needed?
+            userReference
+                    .child(buyer.getUsername())
+                    .child("purchases")
+                    .setValue(purchase)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            listener.onOrderSuccess();
+                        } else {
+                            listener.onOrderFailed(OrderError.taskFailed());
+                        }
+                    });
+
         });
     }
+
+    public void addProducts(List<Product> products) { products.forEach(this::addProduct); }
+    public void addProduct(Product product) {
+        productReference
+                .child(String.valueOf(product.getId()))
+                .setValue(product);
+    }
+
 
     public void getProductById(int productId, Consumer<Product> callback) {
         productReference.child(String.valueOf(productId)).get().addOnCompleteListener(task -> {

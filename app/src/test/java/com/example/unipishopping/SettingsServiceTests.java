@@ -58,7 +58,11 @@ public class SettingsServiceTests {
 
     @Test
     public void get_valid_whenFullJson() {
-        UserSettings fullSettings = new UserSettings("Test", "Test", "en");
+        UserSettings fullSettings = new UserSettings();
+        fullSettings.setFirstName("Test");
+        fullSettings.setLastName("Test");
+        fullSettings.setLocaleLanguageCode("en");
+
         String validJson = new Gson().toJson(fullSettings);
         when(mockSharedPreferences.getString(KEY, "")).thenReturn(validJson);
 
@@ -83,7 +87,8 @@ public class SettingsServiceTests {
 
     @Test
     public void save_storesSettingsAsJson_inSharedPreferences() {
-        UserSettings settings = new UserSettings("Μάκης", "Μάκης", "el");
+        UserSettings settings = new UserSettings();
+        settings.setFirstName("Makis");
 
         SettingsService.save(settings, mockContext);
 
@@ -104,7 +109,9 @@ public class SettingsServiceTests {
 
     @Test
     public void getLocale_validLocaleList_whenSettingsExist() {
-        UserSettings settings = new UserSettings(null, null,"en");
+        UserSettings settings = new UserSettings();
+        settings.setLocaleLanguageCode("en");
+
         String validJson = new Gson().toJson(settings);
         when(mockSharedPreferences.getString(KEY, "")).thenReturn(validJson);
 

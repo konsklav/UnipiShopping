@@ -17,18 +17,21 @@ import com.example.unipishopping.databinding.ProductItemBinding;
 import com.example.unipishopping.domain.Product;
 import com.example.unipishopping.ui.formats.NumFormatter;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.function.Consumer;
 
 public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecyclerViewAdapter.ProductRecyclerViewHolder>{
     private final Locale locale;
-    private final ArrayList<Product> products;
+    private final List<Product> products;
     private final Consumer<Product> onClick;
 
-    public ProductRecyclerViewAdapter(Context context, Consumer<Product> onClickListener) {
+    public ProductRecyclerViewAdapter(
+            Context context,
+            List<Product> products,
+            Consumer<Product> onClickListener) {
         LocaleListCompat locales = SettingsService.getLocale(context);
-        products = new ArrayList<>();
+        this.products = products;
         onClick = onClickListener;
 
         if (locales.isEmpty()) {
