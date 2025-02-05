@@ -1,5 +1,8 @@
 package com.example.unipishopping.core;
 
+/**
+ * Contains useful details about what went wrong in the login procedure.
+ */
 public class LoginError {
 
     public static final int INCORRECT_USERNAME = 1;

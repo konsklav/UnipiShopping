@@ -5,6 +5,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * Abstracts the login procedure for Activities
+ */
 public class LoginService {
     private final DatabaseReference usersReference;
 
@@ -13,7 +16,12 @@ public class LoginService {
         usersReference = database.getReference("users");
     }
 
-    public void login(String username, String password,  LoginCallbacks callbacks) {
+    /**
+     * Attempt to login by searching through Firebase Realtime Database for the given username and password
+     * @param callbacks The caller provides an implementation of LoginCallbacks to get notified
+     *                  when the login either succeeded or failed.
+     */
+    public void login(String username, String password, LoginCallbacks callbacks) {
         usersReference.child(username).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 DataSnapshot snapshot = task.getResult();

@@ -1,10 +1,8 @@
 package com.example.unipishopping.core;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
 import androidx.core.os.LocaleListCompat;
 
 import com.example.unipishopping.domain.UserSettings;
