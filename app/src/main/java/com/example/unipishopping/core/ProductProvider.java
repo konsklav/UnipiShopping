@@ -1,7 +1,5 @@
 package com.example.unipishopping.core;
 
-import android.widget.ArrayAdapter;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
