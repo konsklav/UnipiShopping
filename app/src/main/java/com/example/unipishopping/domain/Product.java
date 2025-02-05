@@ -1,7 +1,5 @@
 package com.example.unipishopping.domain;
 
-import java.time.LocalDate;
-
 public class Product {
     int id;
     int title;
@@ -11,10 +9,12 @@ public class Product {
     double locationLatitude;
     double locationLongitude;
 
+    int imageId;
+
     // Required for Firebase
     private Product() {}
 
-    public Product(int id, int title, String description, long releaseDate, double price, double locationLatitude, double locationLongitude) {
+    public Product(int id, int title, String description, long releaseDate, double price, double locationLatitude, double locationLongitude, int imageId) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -22,7 +22,9 @@ public class Product {
         this.price = price;
         this.locationLatitude = locationLatitude;
         this.locationLongitude = locationLongitude;
+        this.imageId = imageId;
     }
+
 
     // Required for Firebase
     public int getId() { return this.id; }
@@ -32,4 +34,5 @@ public class Product {
     public double getPrice() { return price; }
     public double getLocationLatitude() { return locationLatitude; }
     public double getLocationLongitude() { return locationLongitude; }
+    public int getImageId() { return imageId; }
 }
