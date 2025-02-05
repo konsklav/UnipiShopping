@@ -2,7 +2,7 @@ package com.example.unipishopping.domain;
 
 public class Product {
     int id;
-    int title;
+    int titleId;
     String description;
     long releaseDate;
     double price;
@@ -14,9 +14,9 @@ public class Product {
     // Required for Firebase
     private Product() {}
 
-    public Product(int id, int title, String description, long releaseDate, double price, double locationLatitude, double locationLongitude, int imageId) {
+    public Product(int id, int titleId, String description, long releaseDate, double price, double locationLatitude, double locationLongitude, int imageId) {
         this.id = id;
-        this.title = title;
+        this.titleId = titleId;
         this.description = description;
         this.releaseDate = releaseDate;
         this.price = price;
@@ -28,7 +28,7 @@ public class Product {
 
     // Required for Firebase
     public int getId() { return this.id; }
-    public int getTitle() { return this.title; }
+    public int getTitleId() { return this.titleId; }
     public String getDescription() { return this.description; }
     public long getReleaseDate() { return this.releaseDate; }
     public double getPrice() { return price; }
