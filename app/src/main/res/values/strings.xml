@@ -13,5 +13,7 @@
     <string name="buy_part1">Buy Product</string>
     <string name="buy_part2">here:</string>
     <string name="settings">Settings</string>
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
 
 </resources>

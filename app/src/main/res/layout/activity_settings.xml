@@ -87,4 +87,61 @@
         app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/title_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <TextView
+            android:id="@+id/tvUsernameSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pixelify_sans_variable_font_wght"
+            android:text="@string/username"
+            android:textColor="@color/bold_purple"
+            android:textSize="@dimen/sub_title" />
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/buy_margin_left"
+            android:fontFamily="@font/pixelify_sans_variable_font_wght"
+            android:text="@string/username_login"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sub_title" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/title_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <TextView
+            android:id="@+id/tvPasswordSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pixelify_sans_variable_font_wght"
+            android:text="@string/password"
+            android:textColor="@color/bold_purple"
+            android:textSize="@dimen/sub_title" />
+
+        <TextView
+            android:id="@+id/tvPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/buy_margin_left"
+            android:fontFamily="@font/pixelify_sans_variable_font_wght"
+            android:text="@string/password_login"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sub_title" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
