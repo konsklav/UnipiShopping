@@ -33,7 +33,7 @@
         android:fontFamily="@font/pixelify_sans_variable_font_wght"
         android:text="@string/product_name"
         android:textColor="@color/black"
-        android:textSize="@dimen/product_info_small"
+        android:textSize="@dimen/product_info_small_n"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
@@ -45,7 +45,7 @@
         android:fontFamily="@font/pixelify_sans_bold"
         android:text="@string/product_price"
         android:textColor="@color/bold_purple"
-        android:textSize="@dimen/product_info_small"
+        android:textSize="@dimen/product_info_small_n"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvProductName" />

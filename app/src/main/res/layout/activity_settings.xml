@@ -91,7 +91,7 @@
         android:id="@+id/linearLayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/title_margin"
+        android:layout_marginTop="@dimen/settings_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2">
@@ -103,7 +103,7 @@
             android:fontFamily="@font/pixelify_sans_variable_font_wght"
             android:text="@string/username"
             android:textColor="@color/bold_purple"
-            android:textSize="@dimen/sub_title" />
+            android:textSize="@dimen/sub_title_n" />
 
         <TextView
             android:id="@+id/tvUsername"
@@ -113,13 +113,14 @@
             android:fontFamily="@font/pixelify_sans_variable_font_wght"
             android:text="@string/username_login"
             android:textColor="@color/black"
-            android:textSize="@dimen/sub_title" />
+            android:textSize="@dimen/sub_title_n" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/title_margin"
+        android:layout_marginTop="@dimen/settings_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
@@ -131,7 +132,7 @@
             android:fontFamily="@font/pixelify_sans_variable_font_wght"
             android:text="@string/password"
             android:textColor="@color/bold_purple"
-            android:textSize="@dimen/sub_title" />
+            android:textSize="@dimen/sub_title_n" />
 
         <TextView
             android:id="@+id/tvPassword"
@@ -141,7 +142,164 @@
             android:fontFamily="@font/pixelify_sans_variable_font_wght"
             android:text="@string/password_login"
             android:textColor="@color/black"
-            android:textSize="@dimen/sub_title" />
+            android:textSize="@dimen/sub_title_n" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pixelify_sans_variable_font_wght"
+        android:text="@string/color_change"
+        android:textSize="@dimen/sub_title_n"
+        android:textColor="@color/bold_purple"
+        android:layout_marginTop="@dimen/settings_margin"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pixelify_sans_variable_font_wght"
+        android:text="@string/color_btn"
+        android:background="@color/light_blue"
+        android:textSize="@dimen/settings_btn_n"
+        android:layout_marginTop="@dimen/sub_margin"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pixelify_sans_variable_font_wght"
+        android:text="@string/font_size_change"
+        android:textSize="@dimen/sub_title_n"
+        android:textColor="@color/bold_purple"
+        android:layout_marginTop="@dimen/settings_margin"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sub_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bold_purple"
+            android:fontFamily="@font/pixelify_sans_variable_font_wght"
+            android:text="Small"
+            android:textSize="@dimen/settings_btn_s" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/buy_margin_left"
+            android:background="@color/bold_purple"
+            android:fontFamily="@font/pixelify_sans_variable_font_wght"
+            android:text="Normal"
+            android:textSize="@dimen/settings_btn_n" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/buy_margin_left"
+            android:background="@color/bold_purple"
+            android:fontFamily="@font/pixelify_sans_variable_font_wght"
+            android:text="Big"
+            android:textSize="@dimen/settings_btn_b" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pixelify_sans_variable_font_wght"
+        android:text="@string/lang_change"
+        android:textColor="@color/bold_purple"
+        android:textSize="@dimen/sub_title_n"
+        android:layout_marginTop="@dimen/sub_margin"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sub_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13">
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/buy_margin_left"
+            android:background="@color/bold_purple"
+            android:fontFamily="@font/pixelify_sans_variable_font_wght"
+            android:text="@string/lang1"
+            android:textSize="@dimen/settings_btn_n" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/buy_margin_left"
+            android:background="@color/bold_purple"
+            android:fontFamily="@font/pixelify_sans_variable_font_wght"
+            android:text="@string/lang2"
+            android:textSize="@dimen/settings_btn_n" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/buy_margin_left"
+            android:background="@color/bold_purple"
+            android:fontFamily="@font/pixelify_sans_variable_font_wght"
+            android:text="@string/lang3"
+            android:textSize="@dimen/settings_btn_n" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pixelify_sans_variable_font_wght"
+        android:text="@string/coordinates_on_off"
+        android:textColor="@color/bold_purple"
+        android:textSize="@dimen/sub_title_n"
+        android:layout_marginTop="@dimen/sub_margin"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sub_margin"
+        android:backgroundTint="@color/pastel_green"
+        android:fontFamily="@font/pixelify_sans_variable_font_wght"
+        android:text="On"
+        android:textSize="@dimen/settings_btn_n"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

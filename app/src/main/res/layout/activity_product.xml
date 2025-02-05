@@ -91,7 +91,7 @@
         android:fontFamily="@font/pixelify_sans_variable_font_wght"
         android:text="@string/product_name"
         android:textColor="@color/black"
-        android:textSize="@dimen/product_info_big"
+        android:textSize="@dimen/product_info_big_n"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
@@ -103,7 +103,7 @@
         android:fontFamily="@font/pixelify_sans_bold"
         android:text="@string/product_price"
         android:textColor="@color/bold_purple"
-        android:textSize="@dimen/product_info_big"
+        android:textSize="@dimen/product_info_big_n"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvProductName" />
@@ -126,7 +126,7 @@
             android:fontFamily="@font/pixelify_sans_variable_font_wght"
             android:text="@string/buy_part1"
             android:textColor="@color/black"
-            android:textSize="@dimen/product_info_big" />
+            android:textSize="@dimen/product_info_big_n" />
 
         <TextView
             android:id="@+id/textView8"
@@ -136,7 +136,7 @@
             android:fontFamily="@font/pixelify_sans_bold"
             android:text="@string/buy_part2"
             android:textColor="@color/bold_purple"
-            android:textSize="@dimen/product_info_big" />
+            android:textSize="@dimen/product_info_big_n" />
     </LinearLayout>
 
     <ImageButton
@@ -171,5 +171,31 @@
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:srcCompat="@drawable/arrow" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pixelify_sans_bold"
+        android:text="@string/product_code"
+        android:textColor="@color/bold_purple"
+        android:textSize="@dimen/product_info_small"
+        android:layout_marginTop="@dimen/sub_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivBuyButton" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/product_info"
+        android:fontFamily="@font/pixelify_sans_variable_font_wght"
+        android:textColor="@color/black"
+        android:textSize="@dimen/product_info_small"
+        android:layout_marginTop="@dimen/sub_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
