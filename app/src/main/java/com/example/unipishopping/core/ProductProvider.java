@@ -1,5 +1,7 @@
 package com.example.unipishopping.core;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -11,12 +13,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * A singleton instance containing all the products. The products list is updated in realtime.
  */
 public class ProductProvider {
+    private static final String TAG = "Products Provider";
     private static ProductProvider instance;
     public static ProductProvider getInstance() {
         if (instance == null) {
@@ -26,47 +32,82 @@ public class ProductProvider {
         return instance;
     }
 
-    private final DatabaseReference productsReference;
-    private final ArrayList<Product> products;
+    private final Map<Integer, Product> products;
 
     private ProductProvider() {
-        productsReference = FirebaseDatabase
+        DatabaseReference productsReference = FirebaseDatabase
                 .getInstance()
                 .getReference("products");
 
-        productsReference.addChildEventListener(new ProductListener());
+        ProductListener listener = new ProductListener();
+        productsReference.addChildEventListener(listener);
 
-        products = new ArrayList<>();
+        products = new HashMap<>();
     }
 
     public List<Product> getAllProducts() {
-        return products;
+        return new ArrayList<>(products.values());
     }
 
     private class ProductListener implements ChildEventListener {
         @Override
         public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            // TODO
+            whenValid(snapshot, p -> {
+                Product previous = products.put(p.getId(), p);
+                if (previous != null) {
+                    Log.w(TAG, "Replaced existing product in onChildAdded().");
+                } else {
+                    Log.i(TAG, "Inserted product '" + p.getId() + "'.");
+                }
+            });
         }
 
         @Override
         public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            // TODO
+            whenValid(snapshot, p -> {
+                Product previous = products.put(p.getId(), p);
+                if (previous != null) {
+                    Log.i(TAG, "Changed product '" + p.getId() + "'.");
+                }
+                else {
+                    Log.w(TAG, "No previous product present in onChildChanged().");
+                }
+            });
         }
 
         @Override
         public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-            // TODO
+            whenValid(snapshot, p -> {
+                Product removedProduct = products.remove(p.getId());
+                if (removedProduct == null) {
+                    Log.w(TAG, "Didn't find product '" + p.getId() + "' to remove");
+                }
+                else {
+                    Log.i(TAG, "Removed product '" + p.getId() + "'.");
+                }
+            });
         }
 
         @Override
         public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            // TODO
+            // Not Implemented
         }
 
         @Override
         public void onCancelled(@NonNull DatabaseError error) {
-            // TODO
+            Log.e(TAG, "An error occurred: " + error.getMessage() + "\n Details: " + error.getDetails());
+        }
+
+        private void whenValid(DataSnapshot snapshot, Consumer<Product> callback) {
+            Product product = snapshot.getValue(Product.class);
+            if (product == null) {
+                Log.e(TAG,
+                        "Couldn't deserialize product from DataSnapshot! Key = '" +
+                        snapshot.getKey() + "'. Ref = '" + snapshot.getRef().getKey() + "'.");
+                return;
+            }
+
+            callback.accept(product);
         }
     }
 }
