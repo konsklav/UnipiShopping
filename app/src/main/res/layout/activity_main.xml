@@ -67,6 +67,7 @@
     </FrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProducts"
         android:layout_width="296dp"
         android:layout_height="502dp"
         app:layout_constraintBottom_toBottomOf="parent"
