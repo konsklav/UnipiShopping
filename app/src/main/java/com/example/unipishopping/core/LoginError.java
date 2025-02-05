@@ -5,7 +5,7 @@ package com.example.unipishopping.core;
  */
 public class LoginError {
 
-    public static final int INVALID_CREDENTAILS = 0;
+    public static final int INVALID_CREDENTIALS = 0;
     public static final int USERNAME_NOTFOUND = 1;
     public static final int PASSWORD_NOTFOUND = 2;
     public static final int TASK_FAILED = 3;
@@ -19,7 +19,7 @@ public class LoginError {
     }
 
     static LoginError invalidCredentials() {
-        return new LoginError(INVALID_CREDENTAILS, "You need to fill out the username and password fields!");
+        return new LoginError(INVALID_CREDENTIALS, "You need to fill out the username and password fields!");
     }
 
     static LoginError usernameNotFound() {
