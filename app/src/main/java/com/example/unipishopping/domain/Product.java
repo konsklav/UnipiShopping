@@ -1,6 +1,11 @@
 package com.example.unipishopping.domain;
 
-public class Product {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class Product implements Parcelable {
     int id;
     int titleId;
     String description;
@@ -35,4 +40,44 @@ public class Product {
     public double getLocationLatitude() { return locationLatitude; }
     public double getLocationLongitude() { return locationLongitude; }
     public int getImageId() { return imageId; }
+
+    protected Product(Parcel in) {
+        id = in.readInt();
+        titleId = in.readInt();
+        description = in.readString();
+        releaseDate = in.readLong();
+        price = in.readDouble();
+        locationLatitude = in.readDouble();
+        locationLongitude = in.readDouble();
+        imageId = in.readInt();
+    }
+
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel in) {
+            return new Product(in);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(titleId);
+        dest.writeString(description);
+        dest.writeLong(releaseDate);
+        dest.writeDouble(price);
+        dest.writeDouble(locationLatitude);
+        dest.writeDouble(locationLongitude);
+        dest.writeInt(imageId);
+    }
 }
