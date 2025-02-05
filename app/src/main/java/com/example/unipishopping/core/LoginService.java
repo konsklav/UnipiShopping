@@ -22,6 +22,11 @@ public class LoginService {
      *                  when the login either succeeded or failed.
      */
     public void login(String username, String password, LoginCallbacks callbacks) {
+        if (username == null || password == null || username.isEmpty() || password.isEmpty()) {
+            callbacks.onLoginFail(LoginError.invalidCredentials());
+            return;
+        }
+
         usersReference.child(username).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 DataSnapshot snapshot = task.getResult();
@@ -37,11 +42,11 @@ public class LoginService {
                         return;
                     }
 
-                    callbacks.onLoginFail(LoginError.invalidPassword());
+                    callbacks.onLoginFail(LoginError.passwordNotFound());
                     return;
                 }
 
-                callbacks.onLoginFail(LoginError.invalidUsername());
+                callbacks.onLoginFail(LoginError.usernameNotFound());
             }
 
             callbacks.onLoginFail(LoginError.taskFailed());

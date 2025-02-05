@@ -5,8 +5,9 @@ package com.example.unipishopping.core;
  */
 public class LoginError {
 
-    public static final int INCORRECT_USERNAME = 1;
-    public static final int INCORRECT_PASSWORD = 2;
+    public static final int INVALID_CREDENTAILS = 0;
+    public static final int USERNAME_NOTFOUND = 1;
+    public static final int PASSWORD_NOTFOUND = 2;
     public static final int TASK_FAILED = 3;
 
     private final int code;
@@ -17,12 +18,16 @@ public class LoginError {
         this.description = description;
     }
 
-    static LoginError invalidUsername() {
-        return new LoginError(INCORRECT_USERNAME, "Username is incorrect.");
+    static LoginError invalidCredentials() {
+        return new LoginError(INVALID_CREDENTAILS, "You need to fill out the username and password fields!");
     }
 
-    static LoginError invalidPassword() {
-        return new LoginError(INCORRECT_PASSWORD, "Password is incorrect.");
+    static LoginError usernameNotFound() {
+        return new LoginError(USERNAME_NOTFOUND, "Username is incorrect.");
+    }
+
+    static LoginError passwordNotFound() {
+        return new LoginError(PASSWORD_NOTFOUND, "Password is incorrect.");
     }
 
     static LoginError taskFailed() {
