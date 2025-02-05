@@ -18,11 +18,14 @@ import com.example.unipishopping.core.SettingsService;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
+import java.util.Locale;
 
 public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppCompatActivity {
 
     private TBinding binding;
+    private Locale locale;
     protected TBinding getBinding() { return binding; }
+    protected Locale getLocale() { return locale; }
 
     @Override
     protected final void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +44,8 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
 
         // Get the Locale from storage and refresh the Activity if it's not the default
         LocaleListCompat appLocale = SettingsService.getLocale(this);
+        locale = appLocale.isEmpty() ? Locale.getDefault() : appLocale.get(0);
+
         AppCompatDelegate.setApplicationLocales(appLocale);
 
         onAfterCreate();
