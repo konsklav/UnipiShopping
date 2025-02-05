@@ -15,6 +15,7 @@ import com.example.unipishopping.R;
 import com.example.unipishopping.core.SettingsService;
 import com.example.unipishopping.databinding.ProductItemBinding;
 import com.example.unipishopping.domain.Product;
+import com.example.unipishopping.ui.formats.NumFormatter;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -90,7 +91,7 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
         public void setItem(Product product, Consumer<Product> onClick, Locale locale) {
             image.setImageResource(product.getImageId());
             name.setText(product.getTitleId());
-            price.setText(String.format(locale, "%.2f", product.getPrice()));
+            price.setText(NumFormatter.formatAsPrice(product.getPrice(), locale));
 
             itemView.setOnClickListener(v -> onClick.accept(product));
         }
