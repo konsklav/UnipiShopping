@@ -1,5 +1,6 @@
 package com.example.unipishopping.ui;
 
+import android.content.Intent;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -28,10 +29,18 @@ public class ProductActivity extends AppActivityBase<ActivityProductBinding> imp
             return;
         }
 
+        if (user == null) {
+            Log.e("Product Activity", "User parcelable is NULL!");
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            return;
+        }
+
         productService = new ProductService();
 
         getBinding().ivProductImg.setImageResource(product.getImageId());
         getBinding().tvProductName.setText(product.getTitleId());
+        getBinding().tvProductInfo.setText(product.getDescription());
         getBinding().tvProductPrice.setText(NumFormatter.formatAsPrice(product.getPrice(), getLocale()));
 
         buyBtn = getBinding().ivBuyButton;
