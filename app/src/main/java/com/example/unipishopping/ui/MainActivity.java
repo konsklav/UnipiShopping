@@ -34,9 +34,7 @@ public class MainActivity extends AppActivityBase<ActivityMainBinding> implement
         }
 
         ProductProvider.getInstance().setOnReceivedListener(this);
-
         new ProductService().addProducts(ProductExampleList.getExampleProducts());
-
         listener = new ProductLocationListener(this, 2500);
 
         RecyclerView productList = getBinding().rvProducts;
