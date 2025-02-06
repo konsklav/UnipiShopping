@@ -2,6 +2,8 @@ package com.example.unipishopping.ui.list;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.view.ViewGroup;
+import android.view.ViewManager;
 
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,11 +19,16 @@ public class ProductRecyclerViewHelper {
 
         Configuration config = context.getResources().getConfiguration();
 
+        boolean isLandscape = config.orientation == Configuration.ORIENTATION_LANDSCAPE;
+
         recyclerView.setLayoutManager(
-                new LinearLayoutManager(
-                        context, config.orientation == Configuration.ORIENTATION_LANDSCAPE
+                new LinearLayoutManager(context, isLandscape
                         ? LinearLayoutManager.HORIZONTAL
                         : LinearLayoutManager.VERTICAL, false));
 
+
+        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) recyclerView.getLayoutParams();
+        params.setMargins(0, 0, 0, 0);
+        recyclerView.setLayoutParams(params);
     }
 }
