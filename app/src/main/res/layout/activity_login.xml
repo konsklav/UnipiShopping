@@ -8,139 +8,149 @@
     android:background="@color/lilac"
     tools:context=".ui.LoginActivity">
 
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title_part1"
-        android:fontFamily="@font/pixelify_sans_variable_font_wght"
-        android:textSize="@dimen/main_title"
-        android:textColor="@color/black"
-        android:layout_marginTop="@dimen/title_margin"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
+        app:layout_constraintEnd_toEndOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title_part2"
-            android:fontFamily="@font/pixelify_sans_bold"
-            android:textSize="@dimen/main_title"
+            android:layout_marginTop="@dimen/title_margin"
+            android:fontFamily="@font/pixelify_sans_variable_font_wght"
+            android:text="@string/title_part1"
             android:textColor="@color/black"
-            tools:layout_editor_absoluteX="86dp"
-            tools:layout_editor_absoluteY="133dp" />
+            android:textSize="@dimen/main_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView5"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title_part3"
-            android:fontFamily="@font/pixelify_sans_bold"
-            android:textSize="@dimen/main_title"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pixelify_sans_bold"
+                android:text="@string/title_part2"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_title"
+                tools:layout_editor_absoluteX="86dp"
+                tools:layout_editor_absoluteY="133dp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pixelify_sans_bold"
+                android:text="@string/title_part3"
+                android:textColor="@color/bold_purple"
+                android:textSize="@dimen/main_title"
+                tools:layout_editor_absoluteX="176dp"
+                tools:layout_editor_absoluteY="132dp" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pixelify_sans_bold"
+                android:text="@string/title_part4"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_title"
+                tools:layout_editor_absoluteX="263dp"
+                tools:layout_editor_absoluteY="133dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sub_margin"
+            android:fontFamily="@font/pixelify_sans_variable_font_wght"
+            android:text="@string/login_bellow"
             android:textColor="@color/bold_purple"
-            tools:layout_editor_absoluteX="176dp"
-            tools:layout_editor_absoluteY="132dp" />
+            android:textSize="@dimen/sub_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-        <TextView
-            android:id="@+id/textView6"
+        <FrameLayout
+            android:id="@+id/frameLayout5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title_part4"
-            android:fontFamily="@font/pixelify_sans_bold"
-            android:textSize="@dimen/main_title"
-            android:textColor="@color/black"
-            tools:layout_editor_absoluteX="263dp"
-            tools:layout_editor_absoluteY="133dp" />
-    </LinearLayout>
+            android:layout_marginTop="@dimen/img_margin"
+            android:background="@drawable/stroke"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView7">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login_bellow"
-        android:fontFamily="@font/pixelify_sans_variable_font_wght"
-        android:textSize="@dimen/sub_title"
-        android:textColor="@color/bold_purple"
-        android:layout_marginTop="@dimen/sub_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="@dimen/main_img"
+                android:layout_height="@dimen/main_img"
+                app:srcCompat="@drawable/store_icon" />
+        </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/frameLayout5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/img_margin"
-        android:background="@drawable/stroke"
-        android:padding="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7">
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="@dimen/main_img"
-            android:layout_height="@dimen/main_img"
-            app:srcCompat="@drawable/store_icon" />
-    </FrameLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/title_margin"
-        android:background="@drawable/stroke"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout5">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etLoginUsername"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout3"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:hint="@string/username_login" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="@dimen/title_margin"
+            android:background="@drawable/stroke"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout5">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/sub_margin"
-        android:background="@drawable/stroke"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLoginUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/username_login" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etLoginPassword"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout4"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:hint="@string/password_login" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="@dimen/sub_margin"
+            android:background="@drawable/stroke"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/bold_purple"
-        android:text="@string/login_button"
-        android:textSize="@dimen/login_btn"
-        android:layout_marginTop="@dimen/login_btn_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLoginPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password_login" />
+        </com.google.android.material.textfield.TextInputLayout>
 
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/login_btn_margin"
+            android:background="@color/bold_purple"
+            android:text="@string/login_button"
+            android:textSize="@dimen/login_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
