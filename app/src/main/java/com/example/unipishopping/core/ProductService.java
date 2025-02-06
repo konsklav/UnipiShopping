@@ -14,14 +14,12 @@ import java.util.function.Consumer;
 
 public class ProductService{
     private final DatabaseReference productReference;
-    private final DatabaseReference userReference;
     private final DatabaseReference purchasesReference;
 
     public ProductService() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         purchasesReference = database.getReference("purchases");
         productReference = database.getReference("products");
-        userReference = database.getReference("users");
     }
 
     public void order(int productId, User buyer, OrderEventListener listener){
