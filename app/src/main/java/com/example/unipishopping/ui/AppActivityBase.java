@@ -56,6 +56,7 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
 
         AppCompatDelegate.setApplicationLocales(appLocale);
 
+        // Get all the required permissions and request the user's permissions.
         if (!permissionsRequested) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 ArrayList<String> perms = new ArrayList<>();
@@ -65,6 +66,7 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
             }
         }
 
+        // Subclasses (Activities that inherit from this) will have their code run here!
         onAfterCreate();
     }
 
@@ -84,6 +86,11 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
         }
     }
 
+    /**
+     * We override this method to declare that permissions have been requested ONCE.
+     * We shouldn't let the application keep sending permission requests to user, or else they'll
+     * get 😡 angry!
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

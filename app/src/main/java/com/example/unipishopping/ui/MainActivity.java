@@ -25,13 +25,18 @@ public class MainActivity extends AppActivityBase<ActivityMainBinding> implement
 
     @Override
     protected void onAfterCreate() {
+        // Get user information from LoginActivity
         user = getIntent().getParcelableExtra(IntentExtras.USER_PARCELABLE);
         if (user == null) {
+
+            // If user parcelable is null, this means that the end-user somehow bypassed the
+            // LoginActivity. If this is the case, send them back.
             Log.e("Main Activity", "User parcelable is NULL!");
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
 
+        // Initialize RecyclerView for Products
         RecyclerView productList = getBinding().rvProducts;
         adapter = new ProductRecyclerViewAdapter(this, p -> {
             Intent intent = new Intent(this, ProductActivity.class);
@@ -43,7 +48,10 @@ public class MainActivity extends AppActivityBase<ActivityMainBinding> implement
         productList.setAdapter(adapter);
         ProductRecyclerViewHelper.applyStyling(productList, this);
 
+        // Defer the adding of the products to the RV to when the ProductProvider has
+        // the products ready and available.
         ProductProvider.getInstance().setOnReceivedListener(this);
+
         listener = new ProductLocationListener(this, 2500);
     }
 
@@ -53,6 +61,11 @@ public class MainActivity extends AppActivityBase<ActivityMainBinding> implement
         adapter.add(products);
     }
 
+
+    /**
+     * Detach/remove event listeners onStop and not onDestroy
+     * <a href="https://developer.android.com/guide/components/activities/activity-lifecycle"></a>
+     */
     @Override
     protected void onStop() {
         super.onStop();

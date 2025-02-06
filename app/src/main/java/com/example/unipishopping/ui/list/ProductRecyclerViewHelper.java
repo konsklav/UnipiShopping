@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * Style and 💫 beautify the RecyclerView!
+ */
 public class ProductRecyclerViewHelper {
     public static void applyStyling(RecyclerView recyclerView, Context context) {
         recyclerView.addItemDecoration(new ProductItemDecoration(10));

@@ -29,6 +29,8 @@ public class ProductProvider {
         return instance;
     }
 
+    // Store listeners (such as Activities and NotificationService) in a list so we can invoke
+    // all listeners' methods when receiving products from Firebase.
     private final List<ProductReceivedListener> onReceivedListeners;
     private boolean hasInitialized = false;
     private final List<Product> products;
@@ -45,22 +47,34 @@ public class ProductProvider {
         products = new ArrayList<>();
     }
 
-    public void setOnReceivedListener(ProductReceivedListener callback) {
+    /**
+     * Registers the given <b>ProductReceivedListener</b>. If data is already present in the provider,
+     * the listener's method is invoked immediately.
+     */
+    public void setOnReceivedListener(ProductReceivedListener listener) {
         if (hasInitialized) {
             Log.i(TAG, "Products were already initialized!");
-            callback.onProductsReceived(products);
+            listener.onProductsReceived(products);
         }
-        onReceivedListeners.add(callback);
+        Log.i(TAG, "Added OnReceived event listener to ProductProvider");
+        onReceivedListeners.add(listener);
     }
 
-    public void removeOnReceivedListener(ProductReceivedListener callback) {
-        if (onReceivedListeners.remove(callback)) {
+    /**
+     * API consumers should take care to call this method as no automatic cleanup is done!
+     */
+    public void removeOnReceivedListener(ProductReceivedListener listener) {
+        if (onReceivedListeners.remove(listener)) {
             Log.i(TAG, "Successfully removed OnReceived event listener from ProductProvider.");
         } else {
             Log.w(TAG, "Couldn't find OnReceived event listener to remove from ProductProvider.");
         }
     }
 
+    /**
+     * Simple implementation of ValueEventListener for Firebase. This is an inner class that acts as
+     * a closure that has access to the outer-scope products List.
+     */
     private class ProductValueListener implements ValueEventListener {
         @Override
         public void onDataChange(@NonNull DataSnapshot snapshot) {
