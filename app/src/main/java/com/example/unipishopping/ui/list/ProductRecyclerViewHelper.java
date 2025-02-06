@@ -10,6 +10,6 @@ public class ProductRecyclerViewHelper {
     public static void applyStyling(RecyclerView recyclerView, Context context) {
         recyclerView.addItemDecoration(new ProductItemDecoration(10));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(context, 1));
     }
 }
