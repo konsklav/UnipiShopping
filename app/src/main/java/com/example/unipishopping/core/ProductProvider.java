@@ -14,9 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Consumer;
 
 /**
@@ -33,7 +31,7 @@ public class ProductProvider {
         return instance;
     }
 
-    private Consumer<List<Product>> onReceived;
+    private List<ProductReceivedListener> onReceivedListeners;
     private boolean hasInitialized = false;
     private final List<Product> products;
 
@@ -48,13 +46,20 @@ public class ProductProvider {
         products = new ArrayList<>();
     }
 
-    public void setOnReceivedListener(Consumer<List<Product>> callback) {
+    public void setOnReceivedListener(ProductReceivedListener callback) {
         if (hasInitialized) {
             Log.i(TAG, "Products were already initialized!");
-            callback.accept(products);
+            callback.onProductsReceived(products);
         }
+        onReceivedListeners.add(callback);
+    }
 
-        onReceived = callback;
+    public void removeOnReceivedListener(ProductReceivedListener callback) {
+        if (onReceivedListeners.remove(callback)) {
+            Log.i(TAG, "Successfully removed OnReceived event listener from ProductProvider.");
+        } else {
+            Log.w(TAG, "Couldn't find OnReceived event listener to remove from ProductProvider.");
+        }
     }
 
     private class ProductValueListener implements ValueEventListener {
@@ -71,7 +76,7 @@ public class ProductProvider {
             Log.i(TAG, "Retrieved " + count + " products from DB.");
 
             hasInitialized = true;
-            onReceived.accept(products);
+            onReceivedListeners.forEach(l -> l.onProductsReceived(products));
         }
 
         @Override
@@ -91,66 +96,4 @@ public class ProductProvider {
             callback.accept(product);
         }
     }
-
-//    private class ProductListener implements ChildEventListener {
-//        @Override
-//        public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//            whenValid(snapshot, p -> {
-//                Product previous = products.put(p.getId(), p);
-//                if (previous != null) {
-//                    Log.w(TAG, "Replaced existing product in onChildAdded().");
-//                } else {
-//                    Log.i(TAG, "Inserted product '" + p.getId() + "'.");
-//                }
-//            });
-//        }
-//
-//        @Override
-//        public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//            whenValid(snapshot, p -> {
-//                Product previous = products.put(p.getId(), p);
-//                if (previous != null) {
-//                    Log.i(TAG, "Changed product '" + p.getId() + "'.");
-//                }
-//                else {
-//                    Log.w(TAG, "No previous product present in onChildChanged().");
-//                }
-//            });
-//        }
-//
-//        @Override
-//        public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-//            whenValid(snapshot, p -> {
-//                Product removedProduct = products.remove(p.getId());
-//                if (removedProduct == null) {
-//                    Log.w(TAG, "Didn't find product '" + p.getId() + "' to remove");
-//                }
-//                else {
-//                    Log.i(TAG, "Removed product '" + p.getId() + "'.");
-//                }
-//            });
-//        }
-//
-//        @Override
-//        public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//            // Not Implemented
-//        }
-//
-//        @Override
-//        public void onCancelled(@NonNull DatabaseError error) {
-//            Log.e(TAG, "An error occurred: " + error.getMessage() + "\n Details: " + error.getDetails());
-//        }
-//
-//        private void whenValid(DataSnapshot snapshot, Consumer<Product> callback) {
-//            Product product = snapshot.getValue(Product.class);
-//            if (product == null) {
-//                Log.e(TAG,
-//                        "Couldn't deserialize product from DataSnapshot! Key = '" +
-//                        snapshot.getKey() + "'. Ref = '" + snapshot.getRef().getKey() + "'.");
-//                return;
-//            }
-//
-//            callback.accept(product);
-//        }
-//    }
 }
