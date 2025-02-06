@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="product_name_1">Τεστάκι Τεστάκι</string>
-    <string name="product_name_2">Μάκης Μάκης</string>
+    <string name="bag1">Μωβ Σακίδιο</string>
+    <string name="bag2">Μπλε Σακίδιο</string>
+    <string name="boots">Μποτάκια</string>
+    <string name="sneakers">Αθλητικά Παπούτσια</string>
+    <string name="glasses">Ροζ Γυαλιά</string>
+    <string name="socks">Μωβ Κάλτσες με Χαμογελαστή Φατσούλα</string>
+    <string name="shirt">Μπλούζα με Διπλό Σχέδιο</string>
+    <string name="sweater">Ριγέ Πουλόβερ</string>
+    <string name="vinyl_disk">Ρετρό Δίσκος</string>
+    <string name="snow_globe">Χιονόμπαλα με Πιγκουίνο</string>
 </resources>

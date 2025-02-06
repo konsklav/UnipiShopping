@@ -5,9 +5,14 @@
     <string name="username_login">Όνομα Χρήστη</string>
     <string name="password_login">Κωδικός</string>
     <string name="login_button">Σύνδεση</string>
-    <string name="product_name">Προϊόν</string>
-    <string name="product_price">18.99€</string>
-    <string name="buy_part1">Αγορά Προϊόντος</string>
-    <string name="buy_part2">:</string>
+    <string name="buy_part1">Αγορά </string>
+    <string name="buy_part2">Προϊόντος:</string>
     <string name="settings">Ρυθμίσεις</string>
+    <string name="username">Όνομα Χρήστη:</string>
+    <string name="password">Κωδικός:</string>
+    <string name="color_change">Αλλαγή Χρώματος Φόντου:</string>
+    <string name="font_size_change">Αλλαγή Μεγέθους Γραμματοσειράς:</string>
+    <string name="coordinates_on_off">(Απ)ενεργοποίηση Τοποθεσίας:</string>
+    <string name="lang_change">Αλλαγή Γλώσσας:</string>
+    <string name="color_btn">Μπλέ</string>
 </resources>

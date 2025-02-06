@@ -31,23 +31,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/pixelify_sans_variable_font_wght"
-        android:text="@string/product_name"
+        android:text="Product Name"
         android:textColor="@color/black"
         android:textSize="@dimen/product_info_small_n"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/tvProductPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/pixelify_sans_bold"
-        android:text="@string/product_price"
+        android:text="18.99$"
         android:textColor="@color/bold_purple"
         android:textSize="@dimen/product_info_small_n"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProductName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvProductName"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

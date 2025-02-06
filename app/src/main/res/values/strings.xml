@@ -8,22 +8,17 @@
     <string name="username_login">Username</string>
     <string name="password_login">Password</string>
     <string name="login_button">Login</string>
-    <string name="product_name">Product Name</string>
-    <string name="product_price">18.99$</string>
     <string name="buy_part1">Buy Product</string>
     <string name="buy_part2">here:</string>
     <string name="settings">Settings</string>
     <string name="username">Username:</string>
     <string name="password">Password:</string>
-    <string name="product_code">Code</string>
-    <string name="product_info">Info</string>
     <string name="color_change">Change Background Color:</string>
     <string name="font_size_change">Change Font Size:</string>
     <string name="coordinates_on_off">Turn On/Off Coordinates:</string>
     <string name="lang_change">Change Language:</string>
     <string name="color_btn">Blue</string>
-    <string name="lang1">ENG</string>
-    <string name="lang2">GRE</string>
-    <string name="lang3">ESP</string>
-
+    <string name="lang1" translatable="false">ENG</string>
+    <string name="lang2" translatable="false">GRE</string>
+    <string name="lang3" translatable="false">ESP</string>
 </resources>

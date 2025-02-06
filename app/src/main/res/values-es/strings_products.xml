@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bag1">Mochila morada</string>
+    <string name="bag2">Mochila azul</string>
+    <string name="boots">Botas con cordones</string>
+    <string name="sneakers">Zapatillas con cordones</string>
+    <string name="glasses">Gafas rosas</string>
+    <string name="socks">Calcetines morados con cara sonriente</string>
+    <string name="shirt">Camiseta de doble estampado</string>
+    <string name="sweater">Suéter a rayas</string>
+    <string name="vinyl_disk">Disco de vinilo vintage</string>
+    <string name="snow_globe">Bola de nieve con pingüino</string>
+</resources>

@@ -89,24 +89,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/pixelify_sans_variable_font_wght"
-        android:text="@string/product_name"
+        android:text="Product Name"
         android:textColor="@color/black"
         android:textSize="@dimen/product_info_big_n"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/tvProductPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/pixelify_sans_bold"
-        android:text="@string/product_price"
+        android:text="18.99$"
         android:textColor="@color/bold_purple"
         android:textSize="@dimen/product_info_big_n"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProductName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvProductName"
+        tools:ignore="HardcodedText" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -177,25 +179,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/pixelify_sans_bold"
-        android:text="@string/product_code"
+        android:text="Code"
         android:textColor="@color/bold_purple"
         android:textSize="@dimen/product_info_small"
         android:layout_marginTop="@dimen/sub_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/tvProductInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/product_info"
+        android:text="Info"
         android:fontFamily="@font/pixelify_sans_variable_font_wght"
         android:textColor="@color/black"
         android:textSize="@dimen/product_info_small"
         android:layout_marginTop="@dimen/sub_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
