@@ -1,4 +1,4 @@
-package com.example.unipishopping.core;
+package com.example.unipishopping.core.products;
 
 import android.util.Log;
 

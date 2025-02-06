@@ -4,9 +4,9 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.unipishopping.core.OrderError;
-import com.example.unipishopping.core.OrderEventListener;
-import com.example.unipishopping.core.ProductService;
+import com.example.unipishopping.core.products.OrderError;
+import com.example.unipishopping.core.products.OrderEventListener;
+import com.example.unipishopping.core.products.ProductService;
 import com.example.unipishopping.databinding.ActivityProductBinding;
 import com.example.unipishopping.domain.Product;
 import com.example.unipishopping.domain.User;

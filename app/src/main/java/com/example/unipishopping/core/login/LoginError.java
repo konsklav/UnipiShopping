@@ -1,4 +1,4 @@
-package com.example.unipishopping.core;
+package com.example.unipishopping.core.login;
 
 /**
  * Contains useful details about what went wrong in the login procedure.

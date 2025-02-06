@@ -1,4 +1,4 @@
-package com.example.unipishopping.core;
+package com.example.unipishopping.core.settings;
 
 import android.content.Context;
 import android.util.Log;

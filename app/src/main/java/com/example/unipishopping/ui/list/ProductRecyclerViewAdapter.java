@@ -12,7 +12,7 @@ import androidx.core.os.LocaleListCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unipishopping.R;
-import com.example.unipishopping.core.SettingsService;
+import com.example.unipishopping.core.settings.SettingsService;
 import com.example.unipishopping.databinding.ProductItemBinding;
 import com.example.unipishopping.domain.Product;
 import com.example.unipishopping.ui.formats.NumFormatter;

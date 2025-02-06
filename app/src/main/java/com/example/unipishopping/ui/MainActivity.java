@@ -4,10 +4,10 @@ import android.content.Intent;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.unipishopping.core.ProductLocationListener;
-import com.example.unipishopping.core.ProductProvider;
-import com.example.unipishopping.core.ProductReceivedListener;
-import com.example.unipishopping.core.ProductService;
+import com.example.unipishopping.core.products.ProductLocationListener;
+import com.example.unipishopping.core.products.ProductProvider;
+import com.example.unipishopping.core.products.ProductReceivedListener;
+import com.example.unipishopping.core.products.ProductService;
 import com.example.unipishopping.databinding.ActivityMainBinding;
 import com.example.unipishopping.domain.Product;
 import com.example.unipishopping.domain.User;

@@ -2,7 +2,7 @@ package com.example.unipishopping;
 
 import android.app.Application;
 
-import com.example.unipishopping.core.NotificationService;
+import com.example.unipishopping.core.notifications.NotificationService;
 
 public class UnipiShoppingApplication extends Application {
     @Override

@@ -1,6 +1,5 @@
 package com.example.unipishopping.ui;
 
-import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,14 +18,13 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.viewbinding.ViewBinding;
 
 import com.example.unipishopping.R;
-import com.example.unipishopping.core.ProductLocationListener;
-import com.example.unipishopping.core.SettingsService;
+import com.example.unipishopping.core.products.ProductLocationListener;
+import com.example.unipishopping.core.settings.SettingsService;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Locale;
 
 public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppCompatActivity {
