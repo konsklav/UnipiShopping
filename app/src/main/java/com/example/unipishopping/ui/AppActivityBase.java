@@ -56,7 +56,10 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
 
         if (!permissionsRequested) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                String[] perms = new String[] { Manifest.permission.POST_NOTIFICATIONS };
+                String[] perms = new String[] {
+                        Manifest.permission.POST_NOTIFICATIONS,
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                };
                 requestPermissions(perms, 1);
             }
         }
