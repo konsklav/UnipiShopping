@@ -31,7 +31,7 @@ public class ProductProvider {
         return instance;
     }
 
-    private List<ProductReceivedListener> onReceivedListeners;
+    private final List<ProductReceivedListener> onReceivedListeners;
     private boolean hasInitialized = false;
     private final List<Product> products;
 
@@ -43,6 +43,7 @@ public class ProductProvider {
         ProductValueListener listener = new ProductValueListener();
         productsReference.addValueEventListener(listener);
 
+        onReceivedListeners = new ArrayList<>();
         products = new ArrayList<>();
     }
 
