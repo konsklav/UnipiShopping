@@ -25,7 +25,7 @@
     <dimen name="settings_margin">15sp</dimen>
 
     <dimen name="main_img">200sp</dimen>
-    <dimen name="list_imgs">100sp</dimen>
+    <dimen name="list_imgs">150sp</dimen>
     <dimen name="logo">80sp</dimen>
     <dimen name="buy_btn">60sp</dimen>
 
