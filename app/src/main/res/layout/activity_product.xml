@@ -139,38 +139,38 @@
             android:textSize="@dimen/product_info_big_n" />
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/ivBuyButton"
-        android:layout_width="@dimen/buy_btn"
-        android:layout_height="@dimen/buy_btn"
-        android:scaleType="fitXY"
-        android:background="@drawable/stroke"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sub_margin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/frameLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:srcCompat="@drawable/buy_product" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="@dimen/buy_btn"
-        android:layout_height="@dimen/buy_btn"
-        android:rotation="90"
-        android:layout_marginTop="@dimen/sub_margin"
-        app:layout_constraintEnd_toStartOf="@+id/ivBuyButton"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:srcCompat="@drawable/arrow" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/buy_btn"
+            android:layout_height="@dimen/buy_btn"
+            android:rotation="90"
+            app:srcCompat="@drawable/arrow" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="@dimen/buy_btn"
-        android:layout_height="@dimen/buy_btn"
-        android:rotation="-90"
-        android:layout_marginTop="@dimen/sub_margin"
-        android:layout_marginStart="@dimen/arrows_margin"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:srcCompat="@drawable/arrow" />
+        <ImageButton
+            android:id="@+id/ivBuyButton"
+            android:layout_width="@dimen/buy_btn"
+            android:layout_height="@dimen/buy_btn"
+            android:background="@drawable/stroke"
+            android:scaleType="fitXY"
+            android:padding="2dp"
+            app:srcCompat="@drawable/buy_product" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="@dimen/buy_btn"
+            android:layout_height="@dimen/buy_btn"
+            android:rotation="-90"
+            app:srcCompat="@drawable/arrow" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView9"
@@ -183,7 +183,7 @@
         android:layout_marginTop="@dimen/sub_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivBuyButton" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
     <TextView
         android:id="@+id/textView10"
