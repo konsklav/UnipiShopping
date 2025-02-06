@@ -1,6 +1,5 @@
 package com.example.unipishopping.ui;
 
-import android.content.Intent;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
