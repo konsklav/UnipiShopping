@@ -15,9 +15,11 @@ import java.util.function.Consumer;
 public class ProductService{
     private final DatabaseReference productReference;
     private final DatabaseReference userReference;
+    private final DatabaseReference purchasesReference;
 
     public ProductService() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        purchasesReference = database.getReference("purchases");
         productReference = database.getReference("products");
         userReference = database.getReference("users");
     }
@@ -31,8 +33,7 @@ public class ProductService{
 
             Purchase purchase = buyer.order(product);
 
-            userReference
-                    .child("purchases")
+            purchasesReference
                     .push() // This auto-generates a unique ID for the purchase!
                     .setValue(purchase)
                     .addOnCompleteListener(task -> {
