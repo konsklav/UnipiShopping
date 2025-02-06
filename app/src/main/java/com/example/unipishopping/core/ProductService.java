@@ -41,10 +41,10 @@ public class ProductService{
 
             buyer.addPurchase(purchase);
 
-//            userReference.child(buyer.getUsername()).child("purchases").removeValue();  // Is this needed?
             userReference
                     .child(buyer.getUsername())
                     .child("purchases")
+                    .push() // This auto-generates a unique ID for the purchase!
                     .setValue(purchase)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
