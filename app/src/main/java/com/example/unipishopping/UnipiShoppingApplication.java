@@ -3,6 +3,8 @@ package com.example.unipishopping;
 import android.app.Application;
 
 import com.example.unipishopping.core.notifications.NotificationService;
+import com.example.unipishopping.core.products.ProductService;
+import com.example.unipishopping.ui.ProductExampleList;
 
 public class UnipiShoppingApplication extends Application {
     @Override
@@ -11,5 +13,7 @@ public class UnipiShoppingApplication extends Application {
 
         NotificationService notificationService = new NotificationService();
         notificationService.start(this);
+
+        new ProductService().addProducts(ProductExampleList.getExampleProducts());
     }
 }
