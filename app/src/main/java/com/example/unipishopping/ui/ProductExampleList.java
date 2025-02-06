@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductExampleList {
-    public List<Product> getExampleProducts() {
+    public static List<Product> getExampleProducts() {
         List<Product> products = new ArrayList<>();
 
         products.add(new Product(1, R.string.product_name_1, "Testing!", System.currentTimeMillis(), 19.99, 37.960289766212625, 23.753818262136246, R.drawable.bag1_icon));
