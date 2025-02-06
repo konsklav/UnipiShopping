@@ -1,6 +1,7 @@
 package com.example.unipishopping.ui;
 
 import android.content.Intent;
+import android.util.Log;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +27,12 @@ public class MainActivity extends AppActivityBase<ActivityMainBinding> implement
     @Override
     protected void onAfterCreate() {
         user = getIntent().getParcelableExtra(IntentExtras.USER_PARCELABLE);
+        if (user == null) {
+            Log.e("Main Activity", "User parcelable is NULL!");
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+
         ProductProvider.getInstance().setOnReceivedListener(this);
 
         new ProductService().addProducts(ProductExampleList.getExampleProducts());
