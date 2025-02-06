@@ -16,6 +16,8 @@ public class ProductService{
     private final DatabaseReference productReference;
     private final DatabaseReference purchasesReference;
 
+    private static final String TAG = "Product Service";
+
     public ProductService() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         purchasesReference = database.getReference("purchases");
@@ -58,7 +60,14 @@ public class ProductService{
             if (task.isSuccessful()) {
                 DataSnapshot snapshot = task.getResult();
                 if (snapshot.exists()) {
-                    callback.accept(snapshot.getValue(Product.class));
+                    Product product = snapshot.getValue(Product.class);
+                    if (product == null) {
+                        Log.e(TAG, "Couldn't deserialize Product into class!");
+                        callback.accept(null);
+                        return;
+                    }
+
+                    callback.accept(product);
                     return;
                 }
             } else {
