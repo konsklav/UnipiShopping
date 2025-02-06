@@ -32,7 +32,6 @@ public class ProductService{
             Purchase purchase = buyer.order(product);
 
             userReference
-                    .child(buyer.getUsername())
                     .child("purchases")
                     .push() // This auto-generates a unique ID for the purchase!
                     .setValue(purchase)
