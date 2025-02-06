@@ -7,13 +7,15 @@ import androidx.annotation.NonNull;
 
 public class Purchase implements Parcelable {
     int productId;
+    int userId;
     long timestamp;
 
     // Required for Firebase
     private Purchase() {}
 
-    public Purchase(int productId, long timestamp) {
+    public Purchase(int productId, int userId, long timestamp) {
         this.productId = productId;
+        this.userId = userId;
         this.timestamp = timestamp;
     }
 
@@ -36,6 +38,9 @@ public class Purchase implements Parcelable {
 
     // Required for Firebase
     public int getProductId() { return productId; }
+    public int getUserId() {
+        return userId;
+    }
     public long getTimestamp() { return this.timestamp; }
 
     @Override

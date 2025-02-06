@@ -2,19 +2,13 @@ package com.example.unipishopping.core;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
 import com.example.unipishopping.domain.Product;
 import com.example.unipishopping.domain.Purchase;
 import com.example.unipishopping.domain.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -35,13 +29,8 @@ public class ProductService{
                 return;
             }
 
-            Purchase purchase = new Purchase(
-                    product.getId(),
-                    LocalDateTime.now().toInstant(ZoneOffset.ofHours(2)).toEpochMilli());
+            Purchase purchase = buyer.order(product);
 
-            buyer.addPurchase(purchase);
-
-//            userReference.child(buyer.getUsername()).child("purchases").removeValue();  // Is this needed?
             userReference
                     .child(buyer.getUsername())
                     .child("purchases")
