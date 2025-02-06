@@ -37,7 +37,7 @@
     <dimen name="product_info_big_n">22sp</dimen>
     <dimen name="product_info_big_b">25sp</dimen>
 
-    <dimen name="product_info_small_s">8sp</dimen>
-    <dimen name="product_info_small_n">12sp</dimen>
-    <dimen name="product_info_small_b">15sp</dimen>
+    <dimen name="product_info_small_s">10sp</dimen>
+    <dimen name="product_info_small_n">15sp</dimen>
+    <dimen name="product_info_small_b">18sp</dimen>
 </resources>
