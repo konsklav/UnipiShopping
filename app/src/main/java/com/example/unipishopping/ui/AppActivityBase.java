@@ -1,9 +1,14 @@
 package com.example.unipishopping.ui;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -21,6 +26,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.Locale;
 
 public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppCompatActivity {
+    private static boolean permissionsRequested = false;
 
     private TBinding binding;
     private Locale locale;
@@ -48,6 +54,13 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
 
         AppCompatDelegate.setApplicationLocales(appLocale);
 
+        if (!permissionsRequested) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                String[] perms = new String[] { Manifest.permission.POST_NOTIFICATIONS };
+                requestPermissions(perms, 1);
+            }
+        }
+
         onAfterCreate();
     }
 
@@ -67,6 +80,19 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
         }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        for (int i = 0; i < permissions.length; i++) {
+            String permission = permissions[i];
+            String result = grantResults[i] == PackageManager.PERMISSION_GRANTED
+                    ? "GRANTED" : "DENIED";
+
+            Log.i("UniPiShopping Permissions", "Permission: '" + permission + "' " + result);
+        }
+
+        permissionsRequested = true;
+    }
 
     /**
      * Called immediately after the regular onCreate method finishes setting up bindings, locales, etc...
