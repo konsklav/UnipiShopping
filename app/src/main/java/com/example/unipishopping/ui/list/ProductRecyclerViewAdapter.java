@@ -1,5 +1,6 @@
 package com.example.unipishopping.ui.list;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.example.unipishopping.databinding.ProductItemBinding;
 import com.example.unipishopping.domain.Product;
 import com.example.unipishopping.ui.formats.NumFormatter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Consumer;
@@ -26,12 +28,9 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
     private final List<Product> products;
     private final Consumer<Product> onClick;
 
-    public ProductRecyclerViewAdapter(
-            Context context,
-            List<Product> products,
-            Consumer<Product> onClickListener) {
+    public ProductRecyclerViewAdapter(Context context, Consumer<Product> onClickListener) {
         LocaleListCompat locales = SettingsService.getLocale(context);
-        this.products = products;
+        this.products = new ArrayList<>();
         onClick = onClickListener;
 
         if (locales.isEmpty()) {
@@ -41,24 +40,12 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
         }
     }
 
-    public void add(Product product, int position) {
-        products.add(position, product);
-        notifyItemInserted(position);
+    @SuppressLint("NotifyDataSetChanged")
+    public void add(List<Product> product) {
+        products.addAll(product);
+        notifyDataSetChanged();
     }
 
-    public void remove(Product product) {
-        int i;
-        for (i = 0; i < products.size(); i++) {
-            if (products.get(i).getId() == product.getId()) {
-                break;
-            }
-        }
-
-        if (i < products.size()) {
-            products.remove(i);
-            notifyItemRemoved(i);
-        }
-    }
 
     @NonNull
     @Override

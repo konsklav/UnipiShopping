@@ -21,6 +21,7 @@ import java.util.List;
 public class MainActivity extends AppActivityBase<ActivityMainBinding> implements ProductReceivedListener {
     private User user;
     private ProductLocationListener listener;
+    private ProductRecyclerViewAdapter adapter;
 
     @Override
     protected void onAfterCreate() {
@@ -30,12 +31,9 @@ public class MainActivity extends AppActivityBase<ActivityMainBinding> implement
         new ProductService().addProducts(ProductExampleList.getExampleProducts());
 
         listener = new ProductLocationListener(this, 2500);
-    }
 
-    @Override
-    public void onProductsReceived(List<Product> products) {
         RecyclerView productList = getBinding().rvProducts;
-        ProductRecyclerViewAdapter adapter = new ProductRecyclerViewAdapter(this, products, p -> {
+        adapter = new ProductRecyclerViewAdapter(this, p -> {
             Intent intent = new Intent(this, ProductActivity.class);
             intent.putExtra(IntentExtras.PRODUCT_PARCELABLE, p);
             intent.putExtra(IntentExtras.USER_PARCELABLE, user);
@@ -44,6 +42,11 @@ public class MainActivity extends AppActivityBase<ActivityMainBinding> implement
 
         productList.setAdapter(adapter);
         ProductRecyclerViewHelper.applyStyling(productList, this);
+    }
+
+    @Override
+    public void onProductsReceived(List<Product> products) {
+        adapter.add(products);
     }
 
     @Override
