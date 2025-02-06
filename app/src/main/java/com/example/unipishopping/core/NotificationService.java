@@ -19,7 +19,6 @@ import java.util.function.Consumer;
  * Responsible for building and showing notifications to the user
  */
 public class NotificationService {
-
     private static final String TAG = "UniPiShopping Notifications";
     private static final String CHANNEL_ID = "UniPiShopping_NOTIF";
     private static final String CHANNEL_NAME = "UniPiPliShopping";
