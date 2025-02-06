@@ -6,9 +6,9 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.unipishopping.core.LoginCallbacks;
-import com.example.unipishopping.core.LoginError;
-import com.example.unipishopping.core.LoginService;
+import com.example.unipishopping.core.login.LoginCallbacks;
+import com.example.unipishopping.core.login.LoginError;
+import com.example.unipishopping.core.login.LoginService;
 import com.example.unipishopping.databinding.ActivityLoginBinding;
 import com.example.unipishopping.domain.User;
 import com.example.unipishopping.ui.constants.IntentExtras;

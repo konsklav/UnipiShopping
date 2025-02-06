@@ -1,4 +1,4 @@
-package com.example.unipishopping.core;
+package com.example.unipishopping.core.login;
 
 import com.example.unipishopping.domain.User;
 import com.google.firebase.database.DataSnapshot;

@@ -6,7 +6,7 @@ import android.util.Log;
 
 import androidx.core.os.LocaleListCompat;
 
-import com.example.unipishopping.core.SettingsService;
+import com.example.unipishopping.core.settings.SettingsService;
 import com.example.unipishopping.domain.UserSettings;
 import com.google.gson.Gson;
 

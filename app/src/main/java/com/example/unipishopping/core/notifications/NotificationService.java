@@ -1,4 +1,4 @@
-package com.example.unipishopping.core;
+package com.example.unipishopping.core.notifications;
 
 import android.Manifest;
 import android.app.NotificationChannel;

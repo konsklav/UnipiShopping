@@ -1,12 +1,10 @@
-package com.example.unipishopping.core;
+package com.example.unipishopping.core.products;
 
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.example.unipishopping.domain.Product;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +29,7 @@ public class ProductProvider {
         return instance;
     }
 
-    private List<ProductReceivedListener> onReceivedListeners;
+    private final List<ProductReceivedListener> onReceivedListeners;
     private boolean hasInitialized = false;
     private final List<Product> products;
 
@@ -43,6 +41,7 @@ public class ProductProvider {
         ProductValueListener listener = new ProductValueListener();
         productsReference.addValueEventListener(listener);
 
+        onReceivedListeners = new ArrayList<>();
         products = new ArrayList<>();
     }
 

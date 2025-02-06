@@ -1,4 +1,4 @@
-package com.example.unipishopping.core;
+package com.example.unipishopping.core.products;
 
 public class OrderError {
     public static final int TASK_FAILED = 0;
