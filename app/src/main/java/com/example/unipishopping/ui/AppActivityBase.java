@@ -1,16 +1,20 @@
 package com.example.unipishopping.ui;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.os.LocaleListCompat;
 import androidx.core.view.ViewCompat;
@@ -24,6 +28,7 @@ import com.example.unipishopping.core.settings.SettingsService;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Locale;
 
@@ -66,6 +71,8 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
             }
         }
 
+        bindNavigationBar();
+
         // Subclasses (Activities that inherit from this) will have their code run here!
         onAfterCreate();
     }
@@ -103,6 +110,51 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
         }
 
         permissionsRequested = true;
+    }
+
+    private void bindNavigationBar() {
+        ImageButton homeBtn = findViewById(R.id.nav_home);
+        ImageButton locationBtn = findViewById(R.id.nav_location);
+        ImageButton settingsBtn = findViewById(R.id.nav_settings);
+        ConstraintLayout nav = findViewById(R.id.navigationBar);
+
+        if (homeBtn == null || locationBtn == null || settingsBtn == null || nav == null) {
+            Log.w("Navbar", "Couldn't bind to navbar");
+            return;
+        }
+
+        nav.setPadding(2, 2,2,2);
+
+        if (hasLocationPermissions()) {
+            locationBtn.setEnabled(false);
+        }
+
+        homeBtn.setOnClickListener(v -> {
+            if (this instanceof MainActivity) return;
+
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
+
+        settingsBtn.setOnClickListener(v -> {
+            if (this instanceof SettingsActivity) return;
+
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+        });
+
+        locationBtn.setOnClickListener(v -> {
+            String[] locationPerms = ProductLocationListener.REQUIRED_PERMISSIONS;
+            if (!hasLocationPermissions()) {
+                requestPermissions(locationPerms, 2);
+            }
+        });
+    }
+
+    private boolean hasLocationPermissions() {
+        return Arrays
+                .stream(ProductLocationListener.REQUIRED_PERMISSIONS)
+                .anyMatch(p -> checkSelfPermission(p) == PackageManager.PERMISSION_DENIED);
     }
 
     /**
