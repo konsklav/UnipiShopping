@@ -19,10 +19,14 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.viewbinding.ViewBinding;
 
 import com.example.unipishopping.R;
+import com.example.unipishopping.core.ProductLocationListener;
 import com.example.unipishopping.core.SettingsService;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppCompatActivity {
@@ -56,11 +60,10 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
 
         if (!permissionsRequested) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                String[] perms = new String[] {
-                        Manifest.permission.POST_NOTIFICATIONS,
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                };
-                requestPermissions(perms, 1);
+                ArrayList<String> perms = new ArrayList<>();
+                Collections.addAll(perms, ProductLocationListener.REQUIRED_PERMISSIONS);
+
+                requestPermissions(perms.toArray(new String[]{}), 1);
             }
         }
 
