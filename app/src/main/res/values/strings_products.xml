@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="product_name_1">Testing 123</string>
-    <string name="product_name_2">Other Name</string>
+    <string name="bag1">Purple Bag-Pack</string>
+    <string name="bag2">Blue Bag-Pack</string>
+    <string name="boots">Laced Boots</string>
+    <string name="sneakers">Laced Sneakers</string>
+    <string name="glasses">Pink Glasses</string>
+    <string name="socks">Purple Socks with Smiley Face</string>
+    <string name="shirt">Double Print Shirt</string>
+    <string name="sweater">Striped Sweater</string>
+    <string name="vinyl_disk">Vintage Vinyl Disk</string>
+    <string name="snow_globe">Penguin Snow Globe</string>
 </resources>
