@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.unipishopping.core.products.ProductLocationListener;
 import com.example.unipishopping.core.products.ProductProvider;
 import com.example.unipishopping.core.products.ProductReceivedListener;
-import com.example.unipishopping.core.products.ProductService;
 import com.example.unipishopping.databinding.ActivityMainBinding;
 import com.example.unipishopping.domain.Product;
 import com.example.unipishopping.domain.User;
@@ -33,10 +32,6 @@ public class MainActivity extends AppActivityBase<ActivityMainBinding> implement
             startActivity(intent);
         }
 
-        ProductProvider.getInstance().setOnReceivedListener(this);
-        new ProductService().addProducts(ProductExampleList.getExampleProducts());
-        listener = new ProductLocationListener(this, 2500);
-
         RecyclerView productList = getBinding().rvProducts;
         adapter = new ProductRecyclerViewAdapter(this, p -> {
             Intent intent = new Intent(this, ProductActivity.class);
@@ -47,7 +42,11 @@ public class MainActivity extends AppActivityBase<ActivityMainBinding> implement
 
         productList.setAdapter(adapter);
         ProductRecyclerViewHelper.applyStyling(productList, this);
+
+        ProductProvider.getInstance().setOnReceivedListener(this);
+        listener = new ProductLocationListener(this, 2500);
     }
+
 
     @Override
     public void onProductsReceived(List<Product> products) {
@@ -55,8 +54,8 @@ public class MainActivity extends AppActivityBase<ActivityMainBinding> implement
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onStop() {
+        super.onStop();
         listener.stopListening();
         ProductProvider.getInstance().removeOnReceivedListener(this);
     }
