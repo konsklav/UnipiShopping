@@ -159,7 +159,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnChangeBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/pixelify_sans_variable_font_wght"
@@ -182,7 +182,7 @@
         android:layout_marginTop="@dimen/settings_margin"
         app:layout_constraintEnd_toEndOf="@+id/imageView4"
         app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/btnChangeBackground" />
 
     <LinearLayout
         android:id="@+id/linearLayout5"
@@ -194,32 +194,32 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnSmallFont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/bold_purple"
             android:fontFamily="@font/pixelify_sans_variable_font_wght"
-            android:text="Small"
+            android:text="@string/fontSmall"
             android:textSize="@dimen/settings_btn_s" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnNormalFont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/buy_margin_left"
             android:background="@color/bold_purple"
             android:fontFamily="@font/pixelify_sans_variable_font_wght"
-            android:text="Normal"
+            android:text="@string/fontNormal"
             android:textSize="@dimen/settings_btn_n" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnBigFont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/buy_margin_left"
             android:background="@color/bold_purple"
             android:fontFamily="@font/pixelify_sans_variable_font_wght"
-            android:text="Big"
+            android:text="@string/fontBig"
             android:textSize="@dimen/settings_btn_b" />
     </LinearLayout>
 
@@ -246,7 +246,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13">
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/btnEnglish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/buy_margin_left"
@@ -256,7 +256,7 @@
             android:textSize="@dimen/settings_btn_n" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/btnGreek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/buy_margin_left"
@@ -266,7 +266,7 @@
             android:textSize="@dimen/settings_btn_n" />
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/btnSpanish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/buy_margin_left"
@@ -290,13 +290,13 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/btnLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sub_margin"
         android:backgroundTint="@color/on_green"
         android:fontFamily="@font/pixelify_sans_variable_font_wght"
-        android:text="On"
+        android:text="@string/btnLocationIndicator"
         android:textSize="@dimen/settings_btn_n"
         app:layout_constraintEnd_toEndOf="@+id/imageView4"
         app:layout_constraintStart_toStartOf="@+id/imageView4"
