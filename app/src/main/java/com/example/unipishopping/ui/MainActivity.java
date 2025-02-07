@@ -5,6 +5,8 @@ import android.util.Log;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.unipishopping.core.notifications.NotificationService;
+import com.example.unipishopping.core.products.NearbyProductsListener;
 import com.example.unipishopping.core.products.ProductLocationListener;
 import com.example.unipishopping.core.products.ProductProvider;
 import com.example.unipishopping.core.products.ProductReceivedListener;
@@ -19,10 +21,13 @@ import com.example.unipishopping.ui.list.ProductRecyclerViewHelper;
 import java.util.List;
 
 
-public class MainActivity extends AppActivityBase<ActivityMainBinding> implements ProductReceivedListener {
+public class MainActivity
+        extends AppActivityBase<ActivityMainBinding>
+        implements ProductReceivedListener, NearbyProductsListener {
     private User user;
     private ProductLocationListener listener;
     private ProductRecyclerViewAdapter adapter;
+    private NotificationService notificationService;
 
     @Override
     protected void onAfterCreate() {
@@ -50,15 +55,14 @@ public class MainActivity extends AppActivityBase<ActivityMainBinding> implement
         // the products ready and available.
         ProductProvider.getInstance().setOnReceivedListener(this);
 
-        listener = new ProductLocationListener(this, 2500);
+        notificationService = new NotificationService();
+        listener = new ProductLocationListener(this, 2500, this);
     }
-
 
     @Override
     public void onProductsReceived(List<Product> products) {
         adapter.add(products);
     }
-
 
     /**
      * Detach/remove event listeners onStop and not onDestroy
@@ -69,5 +73,15 @@ public class MainActivity extends AppActivityBase<ActivityMainBinding> implement
         super.onStop();
         listener.stopListening();
         ProductProvider.getInstance().removeOnReceivedListener(this);
+    }
+
+    @Override
+    public void onNearbyProductsFound(List<Product> nearbyProducts) {
+        for (Product p : nearbyProducts) {
+            String title = getString(p.getTitleId());
+
+            notificationService.show(this, builder -> builder
+                    .setContentTitle("'" + title + "' is nearby!"));
+        }
     }
 }

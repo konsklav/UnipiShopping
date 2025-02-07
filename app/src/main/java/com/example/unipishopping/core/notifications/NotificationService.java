@@ -5,8 +5,10 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -22,6 +24,8 @@ public class NotificationService {
     private static final String TAG = "UniPiShopping Notifications";
     private static final String CHANNEL_ID = "UniPiShopping_NOTIF";
     private static final String CHANNEL_NAME = "UniPiPliShopping";
+
+    public static final String REQUIRED_PERMISSIONS = Manifest.permission.POST_NOTIFICATIONS;
 
     /**
      * Creates a notification channel for sending notifications.
@@ -49,7 +53,7 @@ public class NotificationService {
 
         // Further build the notification
         notificationConfiguration.accept(builder);
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(context, REQUIRED_PERMISSIONS) != PackageManager.PERMISSION_GRANTED) {
             Log.e(TAG, "Activity doesn't have POST_NOTIFICATIONS permission! Requesting access...");
             return;
         }

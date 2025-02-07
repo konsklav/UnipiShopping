@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class ProductLocationListener implements ProductReceivedListener, LocationListener {
@@ -30,6 +31,7 @@ public class ProductLocationListener implements ProductReceivedListener, Locatio
 
     private final double detectionRadius;
     private List<Product> products = new ArrayList<>();
+    private final NearbyProductsListener nearbyCallback;
 
     public static final String[] REQUIRED_PERMISSIONS = new String[] {
             Manifest.permission.ACCESS_FINE_LOCATION,
@@ -37,11 +39,12 @@ public class ProductLocationListener implements ProductReceivedListener, Locatio
     };
 
     @SuppressLint("MissingPermission")
-    public ProductLocationListener(Context context, double detectionRadius) {
+    public ProductLocationListener(Context context, double detectionRadius, NearbyProductsListener callback) {
         locationManager = context.getSystemService(LocationManager.class);
         this.context = context;
 
         this.detectionRadius = detectionRadius;
+        this.nearbyCallback = callback;
         ProductProvider.getInstance().setOnReceivedListener(this);
 
         if (hasMissingLocationPermissions()) {
@@ -90,6 +93,10 @@ public class ProductLocationListener implements ProductReceivedListener, Locatio
                 return distance <= detectionRadius;
             })
             .collect(Collectors.toList());
+
+        if (!nearbyProducts.isEmpty()) {
+            nearbyCallback.onNearbyProductsFound(nearbyProducts);
+        }
 
         Log.i(TAG, nearbyProducts.size() + " nearby products found.");
     }
