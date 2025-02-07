@@ -74,15 +74,15 @@
             app:srcCompat="@drawable/store_icon" />
     </FrameLayout>
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="350sp"
-        android:layout_height="550sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:srcCompat="@drawable/stroke2" />
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="350sp"
+            android:layout_height="525sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:srcCompat="@drawable/stroke2" />
 
     <TextView
         android:id="@+id/textView2"
