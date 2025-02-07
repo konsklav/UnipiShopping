@@ -15,4 +15,8 @@
     <string name="coordinates_on_off">Activar/Desactivar coordenadas:</string>
     <string name="lang_change">Cambiar idioma:</string>
     <string name="color_btn">Azul</string>
+    <string name="fontSmall">Pequeña</string>
+    <string name="fontNormal">Normal</string>
+    <string name="fontBig">Grande</string>
+    <string name="btnLocationIndicator">Activado</string>
 </resources>

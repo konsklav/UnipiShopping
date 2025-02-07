@@ -12,7 +12,11 @@
     <string name="password">Κωδικός:</string>
     <string name="color_change">Αλλαγή Χρώματος Φόντου:</string>
     <string name="font_size_change">Αλλαγή Μεγέθους Γραμματοσειράς:</string>
-    <string name="coordinates_on_off">(Απ)ενεργοποίηση Τοποθεσίας:</string>
+    <string name="coordinates_on_off">Τοποθεσία:</string>
     <string name="lang_change">Αλλαγή Γλώσσας:</string>
     <string name="color_btn">Μπλέ</string>
+    <string name="fontSmall">Μικρή</string>
+    <string name="fontNormal">Κανονική</string>
+    <string name="fontBig">Μεγάλή</string>
+    <string name="btnLocationIndicator">Ενεργή</string>
 </resources>
