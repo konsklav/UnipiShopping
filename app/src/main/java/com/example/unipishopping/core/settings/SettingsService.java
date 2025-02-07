@@ -3,7 +3,7 @@ package com.example.unipishopping.core.settings;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.core.os.LocaleListCompat;
 
 import com.example.unipishopping.domain.UserSettings;
@@ -37,13 +37,13 @@ public class SettingsService {
      * @apiNote <b>Null</b> will be returned if the UserSettings have never been saved on the
      *          local machine.
      */
-    @Nullable
+    @NonNull
     public static UserSettings get(Context context) {
         SharedPreferences sp = context.getSharedPreferences(PREF_KEY, Context.MODE_PRIVATE);
         String settingsJson = sp.getString(JSON_KEY, "");
 
         if (settingsJson.isEmpty()) {
-            return null;
+            return new UserSettings();
         }
 
         return new Gson().fromJson(settingsJson, UserSettings.class);

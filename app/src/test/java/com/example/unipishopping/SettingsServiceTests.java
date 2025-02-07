@@ -48,12 +48,17 @@ public class SettingsServiceTests {
     }
 
     @Test
-    public void get_null_whenSharedPreferencesKeyDoesNotExist() {
+    public void get_defaultUserSettings_whenSharedPreferencesKeyDoesNotExist() {
         when(mockSharedPreferences.getString(KEY, "")).thenReturn("");
+        UserSettings defaultSettings = new UserSettings();
 
         UserSettings settings = SettingsService.get(mockContext);
 
-        assertNull(settings);
+        assertNotNull(settings);
+        assertEquals(defaultSettings.getFirstName(), settings.getFirstName());
+        assertEquals(defaultSettings.getLastName(), settings.getLastName());
+        assertEquals(defaultSettings.getLocaleLanguageCode(), settings.getLocaleLanguageCode());
+        assertEquals(defaultSettings.getTextSize(), settings.getTextSize());
     }
 
     @Test
