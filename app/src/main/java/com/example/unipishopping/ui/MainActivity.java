@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.unipishopping.core.products.ProductLocationListener;
 import com.example.unipishopping.core.products.ProductProvider;
 import com.example.unipishopping.core.products.ProductReceivedListener;
+import com.example.unipishopping.core.session.UserSession;
 import com.example.unipishopping.databinding.ActivityMainBinding;
 import com.example.unipishopping.domain.Product;
 import com.example.unipishopping.domain.User;
@@ -26,12 +27,9 @@ public class MainActivity extends AppActivityBase<ActivityMainBinding> implement
     @Override
     protected void onAfterCreate() {
         // Get user information from LoginActivity
-        user = getIntent().getParcelableExtra(IntentExtras.USER_PARCELABLE);
+        user = UserSession.getInstance().getUser();
         if (user == null) {
-
-            // If user parcelable is null, this means that the end-user somehow bypassed the
-            // LoginActivity. If this is the case, send them back.
-            Log.e("Main Activity", "User parcelable is NULL!");
+            Log.e("Main Activity", "User is NULL!");
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
