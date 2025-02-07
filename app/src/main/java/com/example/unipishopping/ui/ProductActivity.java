@@ -1,5 +1,6 @@
 package com.example.unipishopping.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.ImageView;
@@ -20,6 +21,7 @@ public class ProductActivity extends AppActivityBase<ActivityProductBinding> imp
     private User user;
     private ImageView buyBtn;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onAfterCreate() {
         user = getIntent().getParcelableExtra(IntentExtras.USER_PARCELABLE);
@@ -41,6 +43,7 @@ public class ProductActivity extends AppActivityBase<ActivityProductBinding> imp
         getBinding().ivProductImg.setImageResource(product.getImageId());
         getBinding().tvProductName.setText(product.getTitleId());
         getBinding().tvProductInfo.setText(product.getDescription());
+        getBinding().tvCode.setText("UNIPI-" + product.getId());
         getBinding().tvProductPrice.setText(NumFormatter.formatAsPrice(product.getPrice(), getLocale()));
 
         buyBtn = getBinding().ivBuyButton;
