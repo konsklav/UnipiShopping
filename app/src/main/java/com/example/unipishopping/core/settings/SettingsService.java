@@ -24,7 +24,7 @@ public class SettingsService {
      */
     public static LocaleListCompat getLocale(Context context) {
         UserSettings settings = get(context);
-        if (settings == null) {
+        if (settings.getLocaleLanguageCode() == null) {
             return LocaleListCompat.getEmptyLocaleList();
         }
         return LocaleService.getLocale(context, settings);
