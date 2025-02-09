@@ -8,6 +8,7 @@ import androidx.core.os.LocaleListCompat;
 
 import com.example.unipishopping.core.settings.SettingsService;
 import com.example.unipishopping.domain.UserSettings;
+import com.example.unipishopping.ui.constants.TextSize;
 import com.google.gson.Gson;
 
 import org.junit.After;
@@ -124,5 +125,18 @@ public class SettingsServiceTests {
 
         assertNotNull(localeList);
         assertNotEquals(LocaleListCompat.getEmptyLocaleList(), localeList);
+    }
+
+    @Test
+    public void textSize_properlySerialized() {
+        UserSettings settings = new UserSettings();
+        settings.setTextSize(TextSize.BIG);
+        String expectedJsonProperty = "textSize";
+        String expectedJsonValue = "BIG";
+
+        String json = new Gson().toJson(settings);
+
+        assertTrue(json.contains(expectedJsonProperty));
+        assertTrue(json.contains(expectedJsonValue));
     }
 }

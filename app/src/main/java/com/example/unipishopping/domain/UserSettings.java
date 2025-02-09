@@ -2,16 +2,14 @@ package com.example.unipishopping.domain;
 
 import androidx.annotation.Nullable;
 
-public class UserSettings {
+import com.example.unipishopping.ui.constants.TextSize;
 
-    public static final int TEXT_SIZE_SMALL = 0;
-    public static final int TEXT_SIZE_MEDIUM = 1;
-    public static final int TEXT_SIZE_LARGE = 2;
+public class UserSettings {
 
     @Nullable String firstName;
     @Nullable String lastName;
     @Nullable String localeLanguageCode;
-    int textSize = TEXT_SIZE_MEDIUM;
+    TextSize textSize = TextSize.MEDIUM;
 
     public void setFirstName(@Nullable String firstName) {
         this.firstName = firstName;
@@ -24,7 +22,7 @@ public class UserSettings {
     public void setLocaleLanguageCode(@Nullable String localeLanguageCode) {
         this.localeLanguageCode = localeLanguageCode;
     }
-    public void setTextSize(int textSize) {
+    public void setTextSize(TextSize textSize) {
         this.textSize = textSize;
     }
 
@@ -42,5 +40,5 @@ public class UserSettings {
     public String getLastName() {
         return lastName;
     }
-    public int getTextSize() { return textSize; }
+    public TextSize getTextSize() { return textSize; }
 }

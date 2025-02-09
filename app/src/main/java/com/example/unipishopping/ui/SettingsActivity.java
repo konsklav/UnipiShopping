@@ -5,6 +5,7 @@ import com.example.unipishopping.core.settings.SettingsService;
 import com.example.unipishopping.databinding.ActivitySettingsBinding;
 import com.example.unipishopping.domain.User;
 import com.example.unipishopping.domain.UserSettings;
+import com.example.unipishopping.ui.constants.TextSize;
 
 public class SettingsActivity extends AppActivityBase<ActivitySettingsBinding> {
     @Override
@@ -18,7 +19,9 @@ public class SettingsActivity extends AppActivityBase<ActivitySettingsBinding> {
         getBinding().tvPassword.setText(user.getPassword());
     }
 
-    private void changeFontSize(int size) {
+    private void changeFontSize(TextSize size) {
+        UserSettings settings = SettingsService.get(this);
+        settings.setTextSize(size);
         recreate();
     }
 
