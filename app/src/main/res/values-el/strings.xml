@@ -14,7 +14,8 @@
     <string name="font_size_change">Αλλαγή Μεγέθους Γραμματοσειράς:</string>
     <string name="coordinates_on_off">Τοποθεσία:</string>
     <string name="lang_change">Αλλαγή Γλώσσας:</string>
-    <string name="color_btn">Μπλέ</string>
+    <string name="color_btn_secondary">Μπλέ</string>
+    <string name="color_btn_primary">Λιλά</string>
     <string name="fontSmall">Μικρή</string>
     <string name="fontNormal">Κανονική</string>
     <string name="fontBig">Μεγάλή</string>

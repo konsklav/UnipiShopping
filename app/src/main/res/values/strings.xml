@@ -17,7 +17,8 @@
     <string name="font_size_change">Change Font Size:</string>
     <string name="coordinates_on_off">Turn On/Off Coordinates:</string>
     <string name="lang_change">Change Language:</string>
-    <string name="color_btn">Blue</string>
+    <string name="color_btn_secondary">Blue</string>
+    <string name="color_btn_primary">Lilac</string>
     <string name="lang1" translatable="false">ENG</string>
     <string name="lang2" translatable="false">GRE</string>
     <string name="lang3" translatable="false">ESP</string>

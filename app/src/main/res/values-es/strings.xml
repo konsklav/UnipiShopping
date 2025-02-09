@@ -14,7 +14,8 @@
     <string name="font_size_change">Cambiar tamaño de fuente:</string>
     <string name="coordinates_on_off">Activar/Desactivar coordenadas:</string>
     <string name="lang_change">Cambiar idioma:</string>
-    <string name="color_btn">Azul</string>
+    <string name="color_btn_secondary">Azul</string>
+    <string name="color_btn_primary">Lila</string>
     <string name="fontSmall">Pequeña</string>
     <string name="fontNormal">Normal</string>
     <string name="fontBig">Grande</string>
