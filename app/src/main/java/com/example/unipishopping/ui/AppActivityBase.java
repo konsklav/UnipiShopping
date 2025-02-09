@@ -1,20 +1,17 @@
 package com.example.unipishopping.ui;
 
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.os.LocaleListCompat;
 import androidx.core.view.ViewCompat;
@@ -51,7 +48,8 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
 
         // Inflate the ViewBinding so that all Views (Buttons, TextViews, etc...) are initialized.
         binding = inflateBinding();
-        setContentView(binding.getRoot());
+        View root = binding.getRoot();
+        setContentView(root);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -76,8 +74,8 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
         }
 
         new NavigationBarBinder().bind(this);
-        new FontSizeBinder().bind(this);
-        new BackgroundBinder().bind(this);
+        new FontSizeBinder().bind(root);
+        new BackgroundBinder().bind(root);
 
         // Subclasses (Activities that inherit from this) will have their code run here!
         onAfterCreate();

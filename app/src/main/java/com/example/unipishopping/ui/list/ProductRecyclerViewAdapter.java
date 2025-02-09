@@ -16,6 +16,7 @@ import com.example.unipishopping.R;
 import com.example.unipishopping.core.settings.SettingsService;
 import com.example.unipishopping.databinding.ProductItemBinding;
 import com.example.unipishopping.domain.Product;
+import com.example.unipishopping.ui.bindings.FontSizeBinder;
 import com.example.unipishopping.ui.formats.NumFormatter;
 
 import java.util.ArrayList;
@@ -76,6 +77,8 @@ public class ProductRecyclerViewAdapter extends RecyclerView.Adapter<ProductRecy
             image = binding.ivProductImg;
             name = binding.tvProductName;
             price = binding.tvProductPrice;
+
+            new FontSizeBinder().bind(itemView);
         }
 
         public void setItem(Product product, Consumer<Product> onClick, Locale locale) {

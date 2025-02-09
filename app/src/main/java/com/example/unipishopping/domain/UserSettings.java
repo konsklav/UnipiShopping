@@ -30,8 +30,17 @@ public class UserSettings {
         this.bgColor = color;
     }
 
-    public TextSize getTextSize() { return textSize; }
-    public BackgroundColor getBackgroundColor() { return bgColor; }
+    public TextSize getTextSize() {
+        if (textSize == null)
+            return TextSize.MEDIUM;
+
+        return textSize;
+    }
+    public BackgroundColor getBackgroundColor() {
+        if (bgColor == null)
+            return BackgroundColor.PRIMARY;
+        return bgColor;
+    }
     @Nullable public String getLocaleLanguageCode() { return localeLanguageCode; }
     @Nullable public String getFirstName() { return firstName; }
     @Nullable public String getLastName() { return lastName; }
