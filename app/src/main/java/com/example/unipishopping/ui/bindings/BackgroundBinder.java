@@ -3,28 +3,33 @@ package com.example.unipishopping.ui.bindings;
 import android.util.Log;
 import android.view.View;
 
-import androidx.viewbinding.ViewBinding;
+import androidx.annotation.Nullable;
 
 import com.example.unipishopping.R;
 import com.example.unipishopping.core.settings.SettingsService;
-import com.example.unipishopping.domain.UserSettings;
-import com.example.unipishopping.ui.AppActivityBase;
 import com.example.unipishopping.ui.constants.BackgroundColor;
 
 import java.util.Objects;
 
-public class BackgroundBinder implements Binder {
+public class BackgroundBinder implements ViewBinder {
+
     @Override
-    public <T extends ViewBinding> void bind(AppActivityBase<T> activity) {
-        View rootView = activity.findViewById(R.id.main);
+    public void bind(View view) {
+        View rootView = getBackgroundView(view);
 
         if (rootView == null) {
             Log.e("BG Binding", "Couldn't find root view with ID 'main'.");
             return;
         }
 
-        BackgroundColor color = SettingsService.get(activity).getBackgroundColor();
-        rootView.setBackgroundColor(getColorId(color));
+        BackgroundColor color = SettingsService.get(view.getContext()).getBackgroundColor();
+        int colorInt = view.getContext().getColor(getColorId(color));
+        rootView.setBackgroundColor(colorInt);
+    }
+
+    @Nullable
+    public View getBackgroundView(View view) {
+        return view.findViewById(R.id.main);
     }
 
     private int getColorId(BackgroundColor color) {

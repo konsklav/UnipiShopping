@@ -2,6 +2,7 @@ package com.example.unipishopping.ui.bindings;
 
 import android.content.Intent;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -13,12 +14,12 @@ import com.example.unipishopping.ui.AppActivityBase;
 import com.example.unipishopping.ui.MainActivity;
 import com.example.unipishopping.ui.SettingsActivity;
 
-public class NavigationBarBinder implements Binder{
-    public <T extends ViewBinding> void bind(AppActivityBase<T> activity) {
-        ImageButton homeBtn = activity.findViewById(R.id.nav_home);
-        ImageButton locationBtn = activity.findViewById(R.id.nav_location);
-        ImageButton settingsBtn = activity.findViewById(R.id.nav_settings);
-        ConstraintLayout nav = activity.findViewById(R.id.navigationBar);
+public class NavigationBarBinder implements ActivityBinder {
+    public  <T extends ViewBinding> void bind(AppActivityBase<T> view) {
+        ImageButton homeBtn = view.findViewById(R.id.nav_home);
+        ImageButton locationBtn = view.findViewById(R.id.nav_location);
+        ImageButton settingsBtn = view.findViewById(R.id.nav_settings);
+        ConstraintLayout nav = view.findViewById(R.id.navigationBar);
 
         if (homeBtn == null || locationBtn == null || settingsBtn == null || nav == null) {
             Log.w("Navbar", "Couldn't bind to navbar");
@@ -26,22 +27,22 @@ public class NavigationBarBinder implements Binder{
         }
 
         homeBtn.setOnClickListener(v -> {
-            if (activity instanceof MainActivity) return;
+            if (view instanceof MainActivity) return;
 
-            Intent intent = new Intent(activity, MainActivity.class);
-            activity.startActivity(intent);
+            Intent intent = new Intent(view, MainActivity.class);
+            view.startActivity(intent);
         });
 
         settingsBtn.setOnClickListener(v -> {
-            if (activity instanceof SettingsActivity) return;
+            if (view instanceof SettingsActivity) return;
 
-            Intent intent = new Intent(activity, SettingsActivity.class);
-            activity.startActivity(intent);
+            Intent intent = new Intent(view, SettingsActivity.class);
+            view.startActivity(intent);
         });
 
         locationBtn.setOnClickListener(v -> {
             String[] locationPerms = ProductLocationListener.REQUIRED_PERMISSIONS;
-            activity.requestPermissions(locationPerms, 2);
+            view.requestPermissions(locationPerms, 2);
         });
     }
 }

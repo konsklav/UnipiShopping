@@ -4,6 +4,6 @@ import androidx.viewbinding.ViewBinding;
 
 import com.example.unipishopping.ui.AppActivityBase;
 
-public interface Binder {
+public interface ActivityBinder {
     <T extends ViewBinding> void bind(AppActivityBase<T> activity);
 }
