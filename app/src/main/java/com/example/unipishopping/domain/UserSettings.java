@@ -2,6 +2,7 @@ package com.example.unipishopping.domain;
 
 import androidx.annotation.Nullable;
 
+import com.example.unipishopping.ui.constants.BackgroundColor;
 import com.example.unipishopping.ui.constants.TextSize;
 
 public class UserSettings {
@@ -9,7 +10,9 @@ public class UserSettings {
     @Nullable String firstName;
     @Nullable String lastName;
     @Nullable String localeLanguageCode;
+
     TextSize textSize = TextSize.MEDIUM;
+    BackgroundColor bgColor = BackgroundColor.PRIMARY;
 
     public void setFirstName(@Nullable String firstName) {
         this.firstName = firstName;
@@ -26,19 +29,19 @@ public class UserSettings {
         this.textSize = textSize;
     }
 
-    @Nullable
-    public String getLocaleLanguageCode() {
-        return localeLanguageCode;
+    public void setBackgroundColor(BackgroundColor color) {
+        this.bgColor = color;
     }
 
-    @Nullable
-    public String getFirstName() {
-        return firstName;
-    }
-
-    @Nullable
-    public String getLastName() {
-        return lastName;
-    }
     public TextSize getTextSize() { return textSize; }
+    public BackgroundColor getBackgroundColor() { return bgColor; }
+
+    @Nullable
+    public String getLocaleLanguageCode() { return localeLanguageCode; }
+
+    @Nullable
+    public String getFirstName() { return firstName; }
+
+    @Nullable
+    public String getLastName() { return lastName; }
 }
