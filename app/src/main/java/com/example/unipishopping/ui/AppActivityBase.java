@@ -25,6 +25,9 @@ import com.example.unipishopping.R;
 import com.example.unipishopping.core.notifications.NotificationService;
 import com.example.unipishopping.core.products.ProductLocationListener;
 import com.example.unipishopping.core.settings.SettingsService;
+import com.example.unipishopping.ui.bindings.BackgroundBinder;
+import com.example.unipishopping.ui.bindings.FontSizeBinder;
+import com.example.unipishopping.ui.bindings.NavigationBarBinder;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -59,7 +62,6 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
         // Get the Locale from storage and refresh the Activity if it's not the default
         LocaleListCompat appLocale = SettingsService.getLocale(this);
         locale = appLocale.isEmpty() ? Locale.getDefault() : appLocale.get(0);
-
         AppCompatDelegate.setApplicationLocales(appLocale);
 
         // Get all the required permissions and request the user's permissions.
@@ -73,7 +75,9 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
             }
         }
 
-        bindNavigationBar();
+        new NavigationBarBinder().bind(this);
+        new FontSizeBinder().bind(this);
+        new BackgroundBinder().bind(this);
 
         // Subclasses (Activities that inherit from this) will have their code run here!
         onAfterCreate();
@@ -112,45 +116,6 @@ public abstract class AppActivityBase<TBinding extends ViewBinding> extends AppC
         }
 
         permissionsRequested = true;
-    }
-
-    private void bindNavigationBar() {
-        ImageButton homeBtn = findViewById(R.id.nav_home);
-        ImageButton locationBtn = findViewById(R.id.nav_location);
-        ImageButton settingsBtn = findViewById(R.id.nav_settings);
-        ConstraintLayout nav = findViewById(R.id.navigationBar);
-
-        if (homeBtn == null || locationBtn == null || settingsBtn == null || nav == null) {
-            Log.w("Navbar", "Couldn't bind to navbar");
-            return;
-        }
-
-        nav.setPadding(2, 2,2,2);
-
-        if (hasLocationPermissions()) {
-            locationBtn.setEnabled(false);
-        }
-
-        homeBtn.setOnClickListener(v -> {
-            if (this instanceof MainActivity) return;
-
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        });
-
-        settingsBtn.setOnClickListener(v -> {
-            if (this instanceof SettingsActivity) return;
-
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-        });
-
-        locationBtn.setOnClickListener(v -> {
-            String[] locationPerms = ProductLocationListener.REQUIRED_PERMISSIONS;
-            if (!hasLocationPermissions()) {
-                requestPermissions(locationPerms, 2);
-            }
-        });
     }
 
     private boolean hasLocationPermissions() {

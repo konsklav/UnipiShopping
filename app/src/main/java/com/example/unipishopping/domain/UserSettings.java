@@ -17,31 +17,22 @@ public class UserSettings {
     public void setFirstName(@Nullable String firstName) {
         this.firstName = firstName;
     }
-
     public void setLastName(@Nullable String lastName) {
         this.lastName = lastName;
     }
-
     public void setLocaleLanguageCode(@Nullable String localeLanguageCode) {
         this.localeLanguageCode = localeLanguageCode;
     }
     public void setTextSize(TextSize textSize) {
         this.textSize = textSize;
     }
-
     public void setBackgroundColor(BackgroundColor color) {
         this.bgColor = color;
     }
 
     public TextSize getTextSize() { return textSize; }
     public BackgroundColor getBackgroundColor() { return bgColor; }
-
-    @Nullable
-    public String getLocaleLanguageCode() { return localeLanguageCode; }
-
-    @Nullable
-    public String getFirstName() { return firstName; }
-
-    @Nullable
-    public String getLastName() { return lastName; }
+    @Nullable public String getLocaleLanguageCode() { return localeLanguageCode; }
+    @Nullable public String getFirstName() { return firstName; }
+    @Nullable public String getLastName() { return lastName; }
 }

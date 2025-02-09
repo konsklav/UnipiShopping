@@ -8,9 +8,7 @@
     <dimen name="product_info_big">22sp</dimen>
     <dimen name="notifications_height">50sp</dimen>
     <dimen name="notifications_width">100sp</dimen>
-    <dimen name="settings_btn_s">8sp</dimen>
     <dimen name="settings_btn_n">12sp</dimen>
-    <dimen name="settings_btn_b">16sp</dimen>
 
     <dimen name="title_margin">30sp</dimen>
     <dimen name="sub_margin">10sp</dimen>
@@ -33,13 +31,9 @@
     <dimen name="sub_title_n">20sp</dimen>
     <dimen name="sub_title_b">25sp</dimen>
 
-    <dimen name="product_info_big_s">18sp</dimen>
     <dimen name="product_info_big_n">22sp</dimen>
-    <dimen name="product_info_big_b">25sp</dimen>
 
-    <dimen name="product_info_small_s">10sp</dimen>
     <dimen name="product_info_small_n">15sp</dimen>
-    <dimen name="product_info_small_b">18sp</dimen>
 
     <dimen name="nav_btn">60dp</dimen>
     <dimen name="nav_padding">5dp</dimen>

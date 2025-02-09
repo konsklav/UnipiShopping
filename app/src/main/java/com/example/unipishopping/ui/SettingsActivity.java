@@ -5,6 +5,7 @@ import com.example.unipishopping.core.settings.SettingsService;
 import com.example.unipishopping.databinding.ActivitySettingsBinding;
 import com.example.unipishopping.domain.User;
 import com.example.unipishopping.domain.UserSettings;
+import com.example.unipishopping.ui.constants.BackgroundColor;
 import com.example.unipishopping.ui.constants.TextSize;
 
 public class SettingsActivity extends AppActivityBase<ActivitySettingsBinding> {
@@ -22,18 +23,23 @@ public class SettingsActivity extends AppActivityBase<ActivitySettingsBinding> {
     private void changeFontSize(TextSize size) {
         UserSettings settings = SettingsService.get(this);
         settings.setTextSize(size);
-        recreate();
+        saveSettings(settings);
     }
 
-    private void changeBackground() {
-        recreate();
+    private void changeBackground(BackgroundColor color) {
+        UserSettings settings = SettingsService.get(this);
+        settings.setBackgroundColor(color);
+        saveSettings(settings);
     }
 
     private void changeLocale(String languageCode) {
         UserSettings settings = SettingsService.get(this);
         settings.setLocaleLanguageCode(languageCode);
-        SettingsService.save(settings, this);
+        saveSettings(settings);
+    }
 
+    private void saveSettings(UserSettings settings) {
+        SettingsService.save(settings, this);
         recreate();
     }
 }
