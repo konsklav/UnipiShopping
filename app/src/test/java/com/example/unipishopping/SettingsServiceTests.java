@@ -56,8 +56,8 @@ public class SettingsServiceTests {
         UserSettings settings = SettingsService.get(mockContext);
 
         assertNotNull(settings);
-        assertEquals(defaultSettings.getFirstName(), settings.getFirstName());
-        assertEquals(defaultSettings.getLastName(), settings.getLastName());
+        assertEquals(defaultSettings.getUsername(), settings.getUsername());
+        assertEquals(defaultSettings.getPassword(), settings.getPassword());
         assertEquals(defaultSettings.getLocaleLanguageCode(), settings.getLocaleLanguageCode());
         assertEquals(defaultSettings.getTextSize(), settings.getTextSize());
     }
@@ -65,8 +65,8 @@ public class SettingsServiceTests {
     @Test
     public void get_valid_whenFullJson() {
         UserSettings fullSettings = new UserSettings();
-        fullSettings.setFirstName("Test");
-        fullSettings.setLastName("Test");
+        fullSettings.setUsername("Test");
+        fullSettings.setPassword("Test");
         fullSettings.setLocaleLanguageCode("en");
 
         String validJson = new Gson().toJson(fullSettings);
@@ -75,8 +75,8 @@ public class SettingsServiceTests {
         UserSettings settings = SettingsService.get(mockContext);
 
         assertNotNull(settings);
-        assertEquals(fullSettings.getFirstName(), settings.getFirstName());
-        assertEquals(fullSettings.getLastName(), settings.getLastName());
+        assertEquals(fullSettings.getUsername(), settings.getUsername());
+        assertEquals(fullSettings.getPassword(), settings.getPassword());
         assertEquals(fullSettings.getLocaleLanguageCode(), settings.getLocaleLanguageCode());
     }
 
@@ -88,13 +88,13 @@ public class SettingsServiceTests {
         UserSettings settings = SettingsService.get(mockContext);
 
         assertNotNull(settings);
-        assertEquals("John", settings.getFirstName());
+        assertEquals("John", settings.getUsername());
     }
 
     @Test
     public void save_storesSettingsAsJson_inSharedPreferences() {
         UserSettings settings = new UserSettings();
-        settings.setFirstName("Makis");
+        settings.setUsername("Makis");
 
         SettingsService.save(settings, mockContext);
 

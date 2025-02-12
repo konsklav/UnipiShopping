@@ -5,7 +5,7 @@ import android.util.Log;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.unipishopping.core.notifications.NotificationService;
+import com.example.unipishopping.core.notifications.NearbyProductNotification;
 import com.example.unipishopping.core.products.NearbyProductsListener;
 import com.example.unipishopping.core.products.ProductLocationListener;
 import com.example.unipishopping.core.products.ProductProvider;
@@ -24,15 +24,13 @@ import java.util.List;
 public class MainActivity
         extends AppActivityBase<ActivityMainBinding>
         implements ProductReceivedListener, NearbyProductsListener {
-    private User user;
     private ProductLocationListener listener;
     private ProductRecyclerViewAdapter adapter;
-    private NotificationService notificationService;
 
     @Override
     protected void onAfterCreate() {
         // Get user information from LoginActivity
-        user = UserSession.getInstance().getUser();
+        User user = UserSession.getInstance().getUser();
         if (user == null) {
             Log.e("Main Activity", "User is NULL!");
             Intent intent = new Intent(this, LoginActivity.class);
@@ -44,7 +42,6 @@ public class MainActivity
         adapter = new ProductRecyclerViewAdapter(this, p -> {
             Intent intent = new Intent(this, ProductActivity.class);
             intent.putExtra(IntentExtras.PRODUCT_PARCELABLE, p);
-            intent.putExtra(IntentExtras.USER_PARCELABLE, user);
             startActivity(intent);
         });
 
@@ -55,7 +52,6 @@ public class MainActivity
         // the products ready and available.
         ProductProvider.getInstance().setOnReceivedListener(this);
 
-        notificationService = new NotificationService();
         listener = new ProductLocationListener(this, 2500, this);
     }
 
@@ -76,12 +72,10 @@ public class MainActivity
     }
 
     @Override
-    public void onNearbyProductsFound(List<Product> nearbyProducts) {
-        for (Product p : nearbyProducts) {
-            String title = getString(p.getTitleId());
+    public void onNearbyProductFound(Product product) {
+        Intent intent = new Intent(this, ProductActivity.class);
+        intent.putExtra(IntentExtras.PRODUCT_PARCELABLE, product);
 
-            notificationService.show(this, builder -> builder
-                    .setContentTitle("'" + title + "' is nearby!"));
-        }
+        NearbyProductNotification.show(this, intent, product);
     }
 }

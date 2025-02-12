@@ -54,7 +54,6 @@ public class ProductService{
                 .setValue(product);
     }
 
-
     public void getProductById(int productId, Consumer<Product> callback) {
         productReference.child(String.valueOf(productId)).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {

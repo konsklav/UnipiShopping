@@ -16,20 +16,22 @@ import com.example.unipishopping.domain.Product;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class ProductLocationListener implements ProductReceivedListener, LocationListener {
 
     private final LocationManager locationManager;
     private final Context context;
+    private static final long COOLDOWN_MS = 1000 * 60 * 3; // 3 Minute Cooldown
     private static final int LOCATION_DELAY_MIN = 5000;
-    private static final float LOCATION_DISTANCE_MIN = 5;
+    private static final float LOCATION_DISTANCE_MIN = 0;
     private static final String TAG = ProductLocationListener.class.getName();
 
     private final double detectionRadius;
+    private static final HashMap<Integer, Long> nearbyProductTimeout = new HashMap<>();
     private List<Product> products = new ArrayList<>();
     private final NearbyProductsListener nearbyCallback;
 
@@ -79,25 +81,23 @@ public class ProductLocationListener implements ProductReceivedListener, Locatio
 
         Log.v(TAG, String.format(Locale.getDefault(),"Received location (%.5f, %.5f)", lat, lon));
         List<Product> nearbyProducts = products
-            .stream()
-            .filter(p -> {
-                double pLon = p.getLocationLongitude();
-                double pLat = p.getLocationLatitude();
+                .stream()
+                .filter(this::isCooledDown)
+                .filter(p -> {
+                    double pLon = p.getLocationLongitude();
+                    double pLat = p.getLocationLatitude();
 
-                float[] distanceResults = new float[1];
-                Location.distanceBetween(lat, lon, pLat, pLon, distanceResults);
+                    float[] distanceResults = new float[1];
+                    Location.distanceBetween(lat, lon, pLat, pLon, distanceResults);
 
-                float distance = distanceResults[0];
+                    float distance = distanceResults[0];
 
-                Log.v(TAG, "D(" + p.getId() + ") = " + distance);
-                return distance <= detectionRadius;
-            })
-            .collect(Collectors.toList());
+                    Log.v(TAG, "D(" + p.getId() + ") = " + distance);
+                    return distance <= detectionRadius;
+                })
+                .collect(Collectors.toList());
 
-        if (!nearbyProducts.isEmpty()) {
-            nearbyCallback.onNearbyProductsFound(nearbyProducts);
-        }
-
+        invokeProductFound(nearbyProducts);
         Log.i(TAG, nearbyProducts.size() + " nearby products found.");
     }
 
@@ -116,4 +116,29 @@ public class ProductLocationListener implements ProductReceivedListener, Locatio
                     return isGranted;
                 });
     }
+
+    private void invokeProductFound(List<Product> products) {
+        if (!products.isEmpty()) {
+            Product product = products.get(0);
+            Log.i(TAG, "Invoking callback for '" + product.getId() + "'.");
+            nearbyCallback.onNearbyProductFound(product);
+            nearbyProductTimeout.put(product.getId(), getCurrentMs());
+        }
+    }
+
+    private boolean isCooledDown(Product product) {
+        Long lastNotified = nearbyProductTimeout.get(product.getId());
+        if (lastNotified == null)
+            return true;
+
+        long elapsed = getCurrentMs() - lastNotified;
+        if (elapsed >= COOLDOWN_MS) {
+            nearbyProductTimeout.remove(product.getId());
+            return true;
+        }
+
+        return false;
+    }
+
+    private long getCurrentMs() { return System.currentTimeMillis(); }
 }

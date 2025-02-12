@@ -13,12 +13,6 @@ public class User implements Parcelable {
     // Required for Firebase
     private User() {}
 
-    public User(int id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-    }
-
     // Required for Firebase
     public int getId() { return this.id; }
     public String getUsername() { return this.username; }
@@ -27,15 +21,15 @@ public class User implements Parcelable {
         return new Purchase(product.getId(), getId(), System.currentTimeMillis());
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
     private User(Parcel in) {
         id = in.readInt();
         username = in.readString();
         password = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     @Override

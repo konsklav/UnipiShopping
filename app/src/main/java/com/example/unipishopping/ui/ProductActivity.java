@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.example.unipishopping.core.products.OrderError;
 import com.example.unipishopping.core.products.OrderEventListener;
 import com.example.unipishopping.core.products.ProductService;
+import com.example.unipishopping.core.session.UserSession;
 import com.example.unipishopping.databinding.ActivityProductBinding;
 import com.example.unipishopping.domain.Product;
 import com.example.unipishopping.domain.User;
@@ -24,7 +25,7 @@ public class ProductActivity extends AppActivityBase<ActivityProductBinding> imp
     @SuppressLint("SetTextI18n")
     @Override
     protected void onAfterCreate() {
-        user = getIntent().getParcelableExtra(IntentExtras.USER_PARCELABLE);
+        user = UserSession.getInstance().getUser();
         product = getIntent().getParcelableExtra(IntentExtras.PRODUCT_PARCELABLE);
         if (product == null) {
             Log.e("Product Activity", "Product parcelable is NULL!");

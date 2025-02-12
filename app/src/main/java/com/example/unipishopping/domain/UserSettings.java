@@ -7,18 +7,18 @@ import com.example.unipishopping.ui.constants.TextSize;
 
 public class UserSettings {
 
-    @Nullable String firstName;
-    @Nullable String lastName;
+    @Nullable String username;
+    @Nullable String password;
     @Nullable String localeLanguageCode;
 
     TextSize textSize = TextSize.MEDIUM;
     BackgroundColor bgColor = BackgroundColor.PRIMARY;
 
-    public void setFirstName(@Nullable String firstName) {
-        this.firstName = firstName;
+    public void setUsername(@Nullable String username) {
+        this.username = username;
     }
-    public void setLastName(@Nullable String lastName) {
-        this.lastName = lastName;
+    public void setPassword(@Nullable String password) {
+        this.password = password;
     }
     public void setLocaleLanguageCode(@Nullable String localeLanguageCode) {
         this.localeLanguageCode = localeLanguageCode;
@@ -42,6 +42,6 @@ public class UserSettings {
         return bgColor;
     }
     @Nullable public String getLocaleLanguageCode() { return localeLanguageCode; }
-    @Nullable public String getFirstName() { return firstName; }
-    @Nullable public String getLastName() { return lastName; }
+    @Nullable public String getUsername() { return username; }
+    @Nullable public String getPassword() { return password; }
 }
